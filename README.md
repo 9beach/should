@@ -20,11 +20,11 @@ $ ctest --output-on-failure
 
 ## Glossary
 
-### Test suite
+### test suite
 
 Test suite can hold multiple test suites and/or test cases. test is performed by running a test suite.
 
-### Test case
+### test case
 
 Test case is void (*)(void *) type function including at least one should_be macro.
 
