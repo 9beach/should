@@ -32,12 +32,29 @@
  		val2, #val1 " == " #val2, __FILE__, __LINE__, __func__)
 
 /*!
+ * \brief Checks if two strings contains different letters.
+ *
+ * Puts error message if fail.
+ */
+#define should_be_not_equal_strings(val1, val2)	should_be_not_equal_strings_(\
+		val1, val2, #val1 " != " #val2, __FILE__, __LINE__, __func__)
+
+/*!
  * \brief Checks if two numbers are the same.
  *
  * Puts error message if fail.
  */
 #define should_be_equal_numbers(val1, val2)	should_be_equal_numbers_(val1, \
  		val2, #val1 " == " #val2, __FILE__, __LINE__, __func__)
+
+/*!
+ * \brief Checks if two numbers are not the same.
+ *
+ * Puts error message if fail.
+ */
+#define should_be_not_equal_numbers(val1, val2)	should_be_not_equal_numbers_(\
+		val1, val2, #val1 " != " #val2, __FILE__, __LINE__, __func__)
+
 
 #ifdef __cplusplus
 extern "C" {

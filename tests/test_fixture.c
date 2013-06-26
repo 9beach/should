@@ -39,8 +39,8 @@ void case_fwrite_world(void *fxtr)
 	const size_t cnt = strlen(buf);
 
 	assert(file);
-	should_be(cnt == fwrite(buf, sizeof(char), cnt, file));
-	should_be(ftell(file) == cnt);
+	should_be_equal_numbers(cnt, fwrite(buf, sizeof(char), cnt, file));
+	should_be_equal_numbers(ftell(file), cnt);
 }
 
 int main()

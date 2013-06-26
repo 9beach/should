@@ -9,11 +9,11 @@ void case_hello(void *fxtr)
 	const char *a = "HELLO";
 	const char *b = "hello\0\0";
 
-	should_be_equal_strings("hello", a);
+	should_be_not_equal_strings("hello", a);
 	should_be_equal_strings("hello", b);
 
 	/* using should_be_equal_string is better to debug */
-	should_be(strcmp("hello", a) == 0);
+	should_be(strcmp("hello", a) != 0);
 	should_be(strcmp("hello", b) == 0);
 }
 
@@ -21,9 +21,9 @@ void case_world(void *fxtr)
 {
 	int a = 10;
 	int b = 20;
-	should_be_equal_numbers(a, b);
+	should_be_not_equal_numbers(a, b);
 	should_be_equal_numbers(a, 10);
-	should_be(a == b);
+	should_be(a != b);
 	should_be(a == 10);
 }
 

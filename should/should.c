@@ -45,6 +45,21 @@ void should_be_(int expr, const char *expr_str, const char *file,
 	}
 }
 
+void should_be_not_equal_strings_(const char *val1, const char *val2, 
+		const char *expr_str, const char *file, int line, 
+		const char *func)
+{
+	if (0 != strcmp(val1, val2)) {
+		++success_count_;
+	} else {
+		++failure_count_;
+		printf("should_be: failed (%s) -> (\"%s\" == \"%s\") "
+				"in \"%s\", %s (%d)\n", 
+				expr_str, val1, val2, func, 
+				file, line); 
+	}
+}
+
 void should_be_equal_strings_(const char *val1, const char *val2, 
 		const char *expr_str, const char *file, int line, 
 		const char *func)
@@ -68,6 +83,20 @@ void should_be_equal_numbers_(int val1, int val2, const char *expr_str,
 	} else {
 		++failure_count_;
 		printf("should_be: failed (%s) -> (%d != %d) "
+				"in \"%s\", %s (%d)\n", 
+				expr_str, val1, val2, func, 
+				file, line); 
+	}
+}
+
+void should_be_not_equal_numbers_(int val1, int val2, const char *expr_str, 
+		const char *file, int line, const char *func)
+{
+	if (val1 != val2) {
+		++success_count_;
+	} else {
+		++failure_count_;
+		printf("should_be: failed (%s) -> (%d == %d) "
 				"in \"%s\", %s (%d)\n", 
 				expr_str, val1, val2, func, 
 				file, line); 
