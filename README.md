@@ -4,7 +4,7 @@ Minimal xUnit library for C programmers
 
 ## Installation
 
-```
+```bash
 $ # install should library
 $ git clone git@github.com:9beach/should.git
 $ cd should
@@ -41,7 +41,7 @@ You can initialize/finalize the fixture with the setup/teardown function. if a s
 ## Examples
 
 Minimal example
-```
+```C
 #include <should/should.h>
 
 #include <stdio.h>
@@ -56,7 +56,7 @@ void case_hello(void *fxtr)
         should_be_not_equal_strings("hello", a);
         should_be_equal_strings("hello", b);
 
-        /* using should_be_equal_string is better to debug */
+        /* using should_be_equal_strings would be better to debug */
         should_be(strcmp("hello", a) != 0);
         should_be(strcmp("hello", b) == 0);
 }
@@ -95,7 +95,7 @@ int main()
 ```
 
 Example with the fixture
-```
+```C
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
