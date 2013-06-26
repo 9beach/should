@@ -5,13 +5,14 @@ Minimal xUnit library for C programmers
 ## Installation
 
 ```
-$ # First, install should library
-$ gem git clone git@github.com:9beach/should.git
+$ # install should library
+$ git clone git@github.com:9beach/should.git
 $ cd should
 $ mkdir build
 $ cmake ..
-$ make && make install
-$ # If you want to test should lib
+$ make
+$ sudo make install
+$ # test should lib
 $ ctest 
 $ # or
 $ ctest --output-on-failure
