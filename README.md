@@ -1,6 +1,6 @@
 # should
 
-Minimal xUnit library for C programmers
+Minimal xUnit library for C programmers.
 
 ## Installation
 
@@ -94,7 +94,7 @@ int main()
 }
 ```
 
-Example with the fixture
+Example with a fixture
 ```C
 #include <stdio.h>
 #include <string.h>
@@ -155,3 +155,6 @@ int main()
         return should_run_and_destroy_suite(s0);
 }
 ```
+
+## Reference
+* [Kent Beck's original testing framework paper](http://www.xprogramming.com/testfram.htm)
