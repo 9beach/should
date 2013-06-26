@@ -1,12 +1,2 @@
-2008-03-02  Hyun Rae Cho  <hyunraecho@tmax.co.kr>
-	* Version 0.4: Source-level backward compatibility is OK! 
-	but you need to install cvs/kcompat headers.
-	* should.h/should.c: Change function names from VERB_should_OBJ, 
-	to should_VERB_OBJ and add #defines for old names.
-	* should.h/should.c: Include <kcompat/kcompat.h> and add
-	#define SHOULD_DECLARE_UNIT/SHOULD_RETURN_SUITE
-	they help you to use should in kernel space.
-	* should.h/should.c: Change types of should_add_xxx functions from
-	void to int for more careful use in kernel space.
-	* should.c: Check if setup returns null for more careful use.
-	both of user and kernel space.
+2013-06-23  Hyunrae Cho  <9beach@gmail.com>
+	* Version 0.4: Initial commit.
