@@ -24,7 +24,7 @@ void teardown(void * fxtr)
         fclose(file);
 }
 
-void case_fwrite_hello(void *fxtr)
+void case_hello(void *fxtr)
 {
         FILE *file = (FILE *)fxtr;
         const char *buf = "hello";
@@ -35,7 +35,7 @@ void case_fwrite_hello(void *fxtr)
         should_be(ftell(file) == cnt);
 }
 
-void case_fwrite_world(void *fxtr)
+void case_world(void *fxtr)
 {
         FILE *file = (FILE *)fxtr;
         const char *buf = "world!!!";
@@ -54,8 +54,8 @@ int main()
 
         should_set_fixture(s0, setup, teardown);
 
-        should_add_case(s0, case_fwrite_hello);
-        should_add_case(s0, case_fwrite_world);
+        should_add_case(s0, case_hello);
+        should_add_case(s0, case_world);
 
         return should_run_and_destroy_suite(s0);
 }
