@@ -93,6 +93,13 @@ int main()
         return should_run_and_destroy_suite(s0);
 }
 ```
+Expected outputs
+```bash
+$ gcc test_simple.c -lshould  && ./a.out && rm -f a.out
+*** Running should_suite "main"...
+*** Running should_suite "sub"...
+*** No errors (out of 12 should_bes) detected in should_suite "main"
+```
 
 Example with a fixture
 ```C
@@ -148,7 +155,7 @@ int main()
 {
         should_suite_t *s0;
 
-        s0 = should_create_suite("MAIN");
+        s0 = should_create_suite("main");
 
         should_set_fixture(s0, setup, teardown);
 
@@ -157,6 +164,13 @@ int main()
 
         return should_run_and_destroy_suite(s0);
 }
+```
+
+Expected outputs
+```bash
+$ gcc test_fixture.c -lshould  && ./a.out && rm -f a.out
+*** Running should_suite "main"...
+*** No errors (out of 4 should_bes) detected in should_suite "main"
 ```
 
 ## Reference
