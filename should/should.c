@@ -33,8 +33,14 @@ struct should_suite_t {
 	int size;
 };
 
-void should_be_(int expr, const char *expr_str, const char *file, 
-		int line, const char *func)
+void
+should_be_(
+		int expr,
+		const char *expr_str,
+		const char *file, 
+		int line,
+		const char *func
+		)
 {
 	assert(expr_str && file && line && func);
 	if (0 != expr) {
@@ -46,9 +52,15 @@ void should_be_(int expr, const char *expr_str, const char *file,
 	}
 }
 
-void should_be_equal_strings_(const char *val1, const char *val2, 
-		const char *expr_str, const char *file, int line, 
-		const char *func)
+void
+should_be_equal_strings_(
+		const char *val1,
+		const char *val2, 
+		const char *expr_str,
+		const char *file,
+		int line, 
+		const char *func
+		)
 {
 	assert(val1 && val2 && expr_str && file && line && func);
 	if (0 == strcmp(val1, val2)) {
@@ -62,9 +74,15 @@ void should_be_equal_strings_(const char *val1, const char *val2,
 	}
 }
 
-void should_be_not_equal_strings_(const char *val1, const char *val2, 
-		const char *expr_str, const char *file, int line, 
-		const char *func)
+void 
+should_be_not_equal_strings_(
+		const char *val1,
+		const char *val2, 
+		const char *expr_str,
+		const char *file, 
+		int line, 
+		const char *func
+		)
 {
 	assert(val1 && val2 && expr_str && file && line && func);
 	if (0 != strcmp(val1, val2)) {
@@ -78,8 +96,15 @@ void should_be_not_equal_strings_(const char *val1, const char *val2,
 	}
 }
 
-void should_be_equal_numbers_(int val1, int val2, const char *expr_str, 
-		const char *file, int line, const char *func)
+void 
+should_be_equal_numbers_(
+		int val1, 
+		int val2, 
+		const char *expr_str, 
+		const char *file, 
+		int line, 
+		const char *func
+		)
 {
 	assert(expr_str && file && line && func);
 	if (val1 == val2) {
@@ -93,8 +118,15 @@ void should_be_equal_numbers_(int val1, int val2, const char *expr_str,
 	}
 }
 
-void should_be_not_equal_numbers_(int val1, int val2, const char *expr_str, 
-		const char *file, int line, const char *func)
+void 
+should_be_not_equal_numbers_(
+		int val1, 
+		int val2, 
+		const char *expr_str, 
+		const char *file, 
+		int line, 
+		const char *func
+		)
 {
 	assert(expr_str && file && line && func);
 	if (val1 != val2) {
@@ -161,7 +193,7 @@ int
 should_add_case(
 		should_suite_t *suite,
 		void (*case_func)(void *)
-	 )
+		)
 {
 	should_unit_t *new_case;
 
@@ -184,7 +216,7 @@ int
 should_add_suite(
 		should_suite_t *owner,
 		should_suite_t *suite
-	  )
+		)
 {
 	should_unit_t *new_suite;
 
@@ -215,7 +247,11 @@ should_set_fixture(
 	suite->teardown = teardown;
 }
 
-static void run_a_case_(should_suite_t *suite, should_unit_t *unit)
+static void 
+run_a_case_(
+		should_suite_t *suite,
+		should_unit_t *unit
+		)
 {
 	void *fxtr = 0;
 
@@ -235,7 +271,10 @@ static void run_a_case_(should_suite_t *suite, should_unit_t *unit)
 		(*suite->teardown)(fxtr);
 }
 
-static void run_suite_recursively_(should_suite_t *suite)
+static void 
+run_suite_recursively_(
+		should_suite_t *suite
+		)
 {
 	void *fxtr = 0;
 	int i;
@@ -260,7 +299,7 @@ static void run_suite_recursively_(should_suite_t *suite)
 int
 should_run_suite(
 		should_suite_t *suite
-	     )
+		)
 {
 	success_count_ = 0;
 	failure_count_ = 0;
@@ -288,7 +327,7 @@ should_run_suite(
 int
 should_run_and_destroy_suite(
 		should_suite_t *suite
-	     )
+		)
 {
 	int ret;
 

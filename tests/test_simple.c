@@ -1,4 +1,4 @@
-#include <should/should.h>
+#include "should/should.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -13,8 +13,8 @@ void case_hello(void *fxtr)
 	should_be_equal_strings("hello", b);
 
 	/* using should_be_equal_strings is better to debug than using 
-	 * should_be, because should_be_equal_strings macro shows each value of
-	 * the two parameters when it fails */
+	   should_be, because should_be_equal_strings macro shows each value of
+	   the two parameters when it fails */
 	should_be(strcmp("hello", a) != 0);
 	should_be(strcmp("hello", b) == 0);
 }
@@ -48,6 +48,6 @@ int main()
 	/* a suite can have not only cases but also suites */
 	should_add_suite(s0, s1);
 
+	/* and finally ... */
 	return should_run_and_destroy_suite(s0);
 }
-
