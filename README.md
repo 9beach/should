@@ -96,12 +96,15 @@ int main()
 
 Example with a fixture
 ```C
+#include <should/should.h>
+
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 #include <assert.h>
 
-#include <should/should.h>
+# Suppose that you implemented fwrite/ftell/fseek functions and 
+# want to verify them working correctly.
 
 void *setup()
 {
