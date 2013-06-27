@@ -105,7 +105,7 @@ int main()
         /* suite can have not only cases but also suites */
         should_add_suite(s0, s1);
 
-	/* and finally ... */
+        /* and finally ... */
         return should_run_and_destroy_suite(s0);
 }
 ```
