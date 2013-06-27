@@ -52,7 +52,7 @@ for each suite and/or case.
 ## Quick Start
 
 ### Minimal example
-#### Code: test_simnple.c
+#### test_simple.c
 ```C
 #include <should/should.h>
 
@@ -110,14 +110,14 @@ int main()
 
 #### Expected outputs
 ```bash
-$ gcc test_simple.c -lshould  && ./a.out && rm -f a.out
+$ gcc test_simple.c -lshould && ./a.out && rm -f a.out
 *** Running should_suite "main"...
 *** Running should_suite "sub"...
 *** No errors (out of 12 should_bes) detected in should_suite "main"
 ```
 
 ### Example with a fixture
-#### Code: test_fixture.c
+#### test_fixture.c
 ```C
 #include <should/should.h>
 
@@ -184,7 +184,7 @@ int main()
 
 #### Expected outputs
 ```bash
-$ gcc test_fixture.c -lshould  && ./a.out && rm -f a.out
+$ gcc test_fixture.c -lshould && ./a.out && rm -f a.out
 *** Running should_suite "main"...
 *** No errors (out of 4 should_bes) detected in should_suite "main"
 ```
