@@ -2,9 +2,9 @@
 
 Minimal xUnit library for C programmers.
 
-I think most of xUnit implementations are too much complex. So I think there are several
-good reasons to re-invent the wheel of xUnit implementations. `shoud` simply and justly supports the 
-concepts of [Kent Beck's original testing framework](http://www.xprogramming.com/testfram.htm).
+I think most of xUnit implementations are too much complex. So I think there 
+are several good reasons to re-invent the wheel of xUnit implementations. 
+`shoud` simply and justly supports the concepts of [Kent Beck's original testing framework](http://www.xprogramming.com/testfram.htm).
 
 ## Installation
 
@@ -26,21 +26,27 @@ $ sudo make install
 
 ### test suite
 
-Test suite can hold multiple test suites and/or test cases. test is performed by running a test suite.
+Test suite can hold multiple test suites and/or test cases. test is performed 
+by running a test suite.
 
 ### test case
 
-Test case is void (*)(void *) type function including at least one should_be macro.
+Test case is void (*)(void *) type function including at least one should_be 
+macro.
 
 ### should_be
 
-should_be macro verifies a expression. if a expression is not true, it puts error message (does not abort).
+should_be macro verifies a expression. if a expression is not true, it puts 
+error message (does not abort).
 
 ### setup, teardown and fixture
 
-Fixture is a environment which is shared among test cases and/or suites of a test suite.
+Fixture is a environment which is shared among test cases and/or suites of a 
+test suite.
 
-You can initialize/finalize the fixture with the setup/teardown function. if a suite has many suites and/or cases, the setup/teardown functions are called for each suite and/or case.
+You can initialize/finalize the fixture with the setup/teardown function. if a 
+suite has many suites and/or cases, the setup/teardown functions are called 
+for each suite and/or case.
 
 ## Examples
 
@@ -60,8 +66,10 @@ void case_hello(void *fxtr)
         should_be_not_equal_strings("hello", a);
         should_be_equal_strings("hello", b);
 
-        /* using should_be_equal_strings would be better to debug */
-        should_be(strcmp("hello", a) != 0);
+	/* using should_be_equal_strings is better to debug than using
+	 * should_be, because should_be_equal_strings macro shows each value of
+	 * the two parameters when it fails */
+	should_be(strcmp("hello", a) != 0);
         should_be(strcmp("hello", b) == 0);
 }
 
