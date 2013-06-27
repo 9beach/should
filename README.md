@@ -12,12 +12,12 @@ are several good reasons to re-invent the wheel of xUnit implementations.
 $ # get
 $ git clone git@github.com:9beach/should.git
 $ # build
-$ cd should
 $ mkdir build
+$ cd should
 $ cmake ..
 $ make
 $ # test
-$ make test # or `ctest' or `ctest --output-on-failure' as you like
+$ ctest # or `make test' or `ctest --output-on-failure' as you like
 $ # install
 $ sudo make install
 ```
