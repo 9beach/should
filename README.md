@@ -2,9 +2,9 @@
 
 Minimal xUnit library for C programmers.
 
-I think today's most xUnit implementations are too much complex. So I think there 
-are some good reasons to re-invent the wheel of xUnit implementations. 
-`shoud` simply and justly supports the concepts of [Kent Beck's original testing framework](http://www.xprogramming.com/testfram.htm).
+I think today's most xUnit library are too much complex. So I think there are 
+some good reasons to re-invent the wheel of xUnit library. `shoud` simply and 
+justly supports the key concepts of [Kent Beck's original testing framework](http://www.xprogramming.com/testfram.htm).
 
 ## Installation
 
