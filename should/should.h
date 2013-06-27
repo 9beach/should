@@ -10,13 +10,13 @@
  * \date 2007/08/08
  */
 
-/* FIXME: Probably configure script is better place for the below logic. */
+/* FIXME: Probably configure script is better place for the logic below. */
 #ifdef _WIN32
 #	define __func__ __FUNCTION__
 #endif
 
 /*!
- * \brief Checks if given expression is true.
+ * \brief Checks if the expression is true.
  *
  * Puts error message if fail.
  */
@@ -55,7 +55,6 @@
 #define should_be_not_equal_numbers(val1, val2)	should_be_not_equal_numbers_(\
 		val1, val2, #val1 " != " #val2, __FILE__, __LINE__, __func__)
 
-
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -63,7 +62,7 @@ extern "C" {
 /*!
  * \brief Test suite structure
  *
- * Test suite can hold multiple test suites and/or test cases.  test is 
+ * A test suite can hold multiple test suites and/or test cases. Test is 
  * performed by running a test suite.
  */
 typedef struct should_suite_t should_suite_t;
@@ -88,7 +87,7 @@ void should_be_not_equal_numbers_(int val1, int val2, const char *expr_str,
 /** \endcond */
 
 /*!
- * \brief Creates test suite
+ * \brief Creates the test suite.
  *
  * In SHOULD, all pointer-type parametes are assigned, not duplicated.
  * \param name just for displaying
@@ -100,7 +99,7 @@ should_create_suite(
 		);
 
 /*!
- * \brief Destroys test suite
+ * \brief Destroys the test suite.
  */
 void
 should_destroy_suite(
@@ -108,7 +107,7 @@ should_destroy_suite(
 		);
 
 /*!
- * \brief Destroy a suite and its all children recursively
+ * \brief Destroy the test suite and its all children recursively
  */
 void
 should_destroy_suite_recursively(
@@ -116,7 +115,7 @@ should_destroy_suite_recursively(
 		);
 
 /*!
- * \brief Adds the test suite to the parent suite
+ * \brief Adds the test suite to the parent.
  * \return 0 if malloc succeeds
  */
 int
@@ -126,10 +125,10 @@ should_add_suite(
 		);
 
 /*!
- * \brief Sets the setup/teardown functions to the test suite
+ * \brief Sets the setup/teardown functions to the test suite.
  *
- * if a suite has many suites and/or cases, the setup/teardown functions 
- * are called for each suite and/or case.
+ * If the suite has many suites and/or cases, the setup/teardown functions 
+ * are called for each of them.
  */
 void
 should_set_fixture(
@@ -139,7 +138,7 @@ should_set_fixture(
 		);
 
 /*!
- * \brief Adds the test case to the test suite
+ * \brief Adds the test case to the test suite.
  * \return 0 if malloc succeeds
  */
 int
@@ -149,7 +148,7 @@ should_add_case(
 		);
 
 /*!
- * \brief Runs all the test cases and suites of the suite
+ * \brief Runs all the test cases and suites of the test suite.
  * \return 0 if all the test cases and suites of the suite succeed
  */
 int
@@ -158,10 +157,11 @@ should_run_suite(
 		);
 
 /*!
- * \brief Runs all the test cases and suites of the suite and destroys them.
+ * \brief Runs all the test cases and suites of the suite, and destroys them.
+ * them.
  *
  * Internally, calls run_should_suite and destroy_should_suite_recursively.
- * \return 0 if all the test cases and suites of the suite succeed
+ * \return 0 if all the test cases and suites of the suite succeeds
  */
 int
 should_run_and_destroy_suite(
@@ -178,13 +178,13 @@ should_run_and_destroy_suite(
  * \mainpage SHOULD
  * \section intro_sec Introduction
  * 
- * SHOULD is a minimal xUnit for C programmers
+ * SHOULD is a minimal xUnit for C programmers.
  *
  * \section glossary Glossary
  * \subsection test_suite_sec Test suite
  *
- * Test suite can hold multiple test suites and/or test cases.
- * test is performed by running a test suite.
+ * A test suite can hold multiple test suites and/or test cases. test is 
+ * performed by running a test suite.
  *
  * \subsection test_case_sec Test case
  *
@@ -193,7 +193,7 @@ should_run_and_destroy_suite(
  *
  * \subsection should_be_sec should_be
  *
- * should_be macro verifies a expression. if a expression is not true,
+ * should_be macro verifies a expression. if the expression is not true,
  * it puts error message (does not abort).
  *
  * \subsection fixture_sec setup, teardown and fixture

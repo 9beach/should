@@ -31,7 +31,7 @@ void case_world(void *fxtr)
 
 int main()
 {
-	/* for example, we have two test suites */
+	/* we gonna make two test suites */
 	should_suite_t *s0;
 	should_suite_t *s1;
 
@@ -45,7 +45,7 @@ int main()
 	/* suite s1 has one test case */
 	should_add_case(s1, case_hello);
 
-	/* suite can have not only cases but also suites */
+	/* a suite can have not only cases but also suites */
 	should_add_suite(s0, s1);
 
 	return should_run_and_destroy_suite(s0);

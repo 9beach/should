@@ -12,12 +12,13 @@ justly supports the key concepts of [Kent Beck's original testing framework](htt
 $ # get
 $ git clone git@github.com:9beach/should.git
 $ # build
-$ mkdir build
 $ cd should
+$ mkdir build
+$ cd build
 $ cmake ..
 $ make
 $ # test
-$ ctest # or `make test' or `ctest --output-on-failure' as you like
+$ ctest # `make test' or `ctest --output-on-failure' or `ctest -V', as you like
 $ # install
 $ sudo make install
 ```
@@ -26,7 +27,7 @@ $ sudo make install
 
 ### test suite
 
-Test suite can hold multiple test suites and/or test cases. test is performed 
+A test suite can hold multiple test suites and/or test cases. test is performed 
 by running a test suite.
 
 ### test case
@@ -36,7 +37,7 @@ macro.
 
 ### should_be
 
-should_be macro verifies a expression. if a expression is not true, it puts 
+should_be macro verifies a expression. if the expression is not true, it puts 
 error message (does not abort).
 
 ### setup, teardown and fixture
@@ -85,7 +86,7 @@ void case_world(void *fxtr)
 
 int main()
 {
-        /* for example, we have two test suites */
+        /* we gonna make two test suites */
         should_suite_t *s0;
         should_suite_t *s1;
 
