@@ -11,7 +11,7 @@ concepts of [Kent Beck's original testing framework](http://www.xprogramming.com
 ```bash
 $ # get
 $ git clone git@github.com:9beach/should.git
-$ build
+$ # build
 $ cd should
 $ mkdir build
 $ cmake ..
