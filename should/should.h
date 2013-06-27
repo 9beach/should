@@ -2,6 +2,38 @@
 #define SHOULD_H_
 
 /*!
+ * \mainpage SHOULD
+ * \section intro_sec Introduction
+ * 
+ * SHOULD is a minimal xUnit for C programmers.
+ *
+ * \section glossary Glossary
+ * \subsection test_suite_sec Test suite
+ *
+ * A test suite can hold multiple test suites and/or test cases. test is 
+ * performed by running a test suite.
+ *
+ * \subsection test_case_sec Test case
+ *
+ * Test case is void (*)(void *) type function including at least one should_be 
+ * macro.
+ *
+ * \subsection should_be_sec should_be
+ *
+ * should_be macro verifies a expression. if the expression is not true,
+ * it puts error message (does not abort).
+ *
+ * \subsection fixture_sec setup, teardown, and fixture
+ *
+ * Fixture is a environment which is shared among test cases and/or suites 
+ * of a test suite.
+ *
+ * You can initialize/finalize the fixture with the setup/teardown function.
+ * if a suite has many suites and/or cases, the setup/teardown functions 
+ * are called for each suite and/or case.
+ */
+
+/*!
  * \file should.h
  *
  * \brief Minimal xUnit library for C programmers
@@ -205,35 +237,3 @@ should_run_and_destroy_suite(
 #endif
 
 #endif /* SHOULD_H_ */
-
-/*!
- * \mainpage SHOULD
- * \section intro_sec Introduction
- * 
- * SHOULD is a minimal xUnit for C programmers.
- *
- * \section glossary Glossary
- * \subsection test_suite_sec Test suite
- *
- * A test suite can hold multiple test suites and/or test cases. test is 
- * performed by running a test suite.
- *
- * \subsection test_case_sec Test case
- *
- * Test case is void (*)(void *) type function including at least one should_be 
- * macro.
- *
- * \subsection should_be_sec should_be
- *
- * should_be macro verifies a expression. if the expression is not true,
- * it puts error message (does not abort).
- *
- * \subsection fixture_sec setup, teardown, and fixture
- *
- * Fixture is a environment which is shared among test cases and/or suites 
- * of a test suite.
- *
- * You can initialize/finalize the fixture with the setup/teardown function.
- * if a suite has many suites and/or cases, the setup/teardown functions 
- * are called for each suite and/or case.
- */
