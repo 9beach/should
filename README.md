@@ -52,7 +52,7 @@ for each suite and/or case.
 
 ## Quick Start
 
-### Minimal example
+### Simple example
 #### test_simple.c
 ```C
 #include <should/should.h>
