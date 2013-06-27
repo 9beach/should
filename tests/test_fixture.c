@@ -6,7 +6,7 @@
 #include <assert.h>
 
 /* suppose that you implemented fwrite/ftell functions and 
-   want to verify them working correctly. */
+ * want to verify them working correctly. */
 
 void *setup()
 {
