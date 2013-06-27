@@ -36,6 +36,7 @@ struct should_suite_t {
 void should_be_(int expr, const char *expr_str, const char *file, 
 		int line, const char *func)
 {
+	assert(expr_str && file && line && func);
 	if (0 != expr) {
 		++success_count_;
 	} else {
@@ -49,6 +50,7 @@ void should_be_equal_strings_(const char *val1, const char *val2,
 		const char *expr_str, const char *file, int line, 
 		const char *func)
 {
+	assert(val1 && val2 && expr_str && file && line && func);
 	if (0 == strcmp(val1, val2)) {
 		++success_count_;
 	} else {
@@ -64,6 +66,7 @@ void should_be_not_equal_strings_(const char *val1, const char *val2,
 		const char *expr_str, const char *file, int line, 
 		const char *func)
 {
+	assert(val1 && val2 && expr_str && file && line && func);
 	if (0 != strcmp(val1, val2)) {
 		++success_count_;
 	} else {
@@ -78,6 +81,7 @@ void should_be_not_equal_strings_(const char *val1, const char *val2,
 void should_be_equal_numbers_(int val1, int val2, const char *expr_str, 
 		const char *file, int line, const char *func)
 {
+	assert(expr_str && file && line && func);
 	if (val1 == val2) {
 		++success_count_;
 	} else {
@@ -92,6 +96,7 @@ void should_be_equal_numbers_(int val1, int val2, const char *expr_str,
 void should_be_not_equal_numbers_(int val1, int val2, const char *expr_str, 
 		const char *file, int line, const char *func)
 {
+	assert(expr_str && file && line && func);
 	if (val1 != val2) {
 		++success_count_;
 	} else {
@@ -161,6 +166,7 @@ should_add_case(
 	should_unit_t *new_case;
 
 	assert(suite);
+	assert(case_func);
 	new_case = realloc(suite->units, 
 			sizeof(should_unit_t) * (suite->size + 1));
 	if (0 == new_case)
