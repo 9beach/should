@@ -68,7 +68,8 @@ extern "C" {
 typedef struct should_suite_t should_suite_t;
 
 /** \cond DOXYGEN_SHOULD_SKIP_THIS */
-void should_be_(
+void
+should_be_(
 		int expr,
 		const char *expr_str,
 		const char *file,
@@ -76,7 +77,8 @@ void should_be_(
 		const char *func
 		);
 
-void should_be_equal_strings_(
+void
+should_be_equal_strings_(
 		const char *val1,
 		const char *val2, 
 		const char *expr_str,
@@ -85,7 +87,8 @@ void should_be_equal_strings_(
 		const char *func
 		);
 
-void should_be_not_equal_strings_(
+void
+should_be_not_equal_strings_(
 		const char *val1,
 		const char *val2, 
 		const char *expr_str,
@@ -94,7 +97,8 @@ void should_be_not_equal_strings_(
 		const char *func
 		);
 
-void should_be_equal_numbers_(
+void
+should_be_equal_numbers_(
 		int val1,
 		int val2,
 		const char *expr_str, 
