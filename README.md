@@ -49,9 +49,10 @@ You can initialize/finalize the fixture with the setup/teardown function. if a
 suite has many suites and/or cases, the setup/teardown functions are called 
 for each suite and/or case.
 
-## Examples
+## Quick Start
 
-Minimal example
+### Minimal example
+#### Code: test_simnple.c
 ```C
 #include <should/should.h>
 
@@ -106,7 +107,8 @@ int main()
         return should_run_and_destroy_suite(s0);
 }
 ```
-Expected outputs
+
+#### Expected outputs
 ```bash
 $ gcc test_simple.c -lshould  && ./a.out && rm -f a.out
 *** Running should_suite "main"...
@@ -114,7 +116,8 @@ $ gcc test_simple.c -lshould  && ./a.out && rm -f a.out
 *** No errors (out of 12 should_bes) detected in should_suite "main"
 ```
 
-Example with a fixture
+### Example with a fixture
+#### Code: test_fixture.c
 ```C
 #include <should/should.h>
 
@@ -179,7 +182,7 @@ int main()
 }
 ```
 
-Expected outputs
+#### Expected outputs
 ```bash
 $ gcc test_fixture.c -lshould  && ./a.out && rm -f a.out
 *** Running should_suite "main"...
