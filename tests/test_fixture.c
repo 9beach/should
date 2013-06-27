@@ -16,7 +16,7 @@ void *setup()
         return file;
 }
 
-void teardown(void * fxtr)
+void teardown(void *fxtr)
 {
         FILE *file = (FILE *)fxtr;
 
