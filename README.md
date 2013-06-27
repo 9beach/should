@@ -2,6 +2,9 @@
 
 Minimal xUnit library for C programmers.
 
+I think most of xUnit implementations are too much complex. `shoud` simply supports the concepts of
+[Kent Beck's original testing framework](http://www.xprogramming.com/testfram.htm).
+
 ## Installation
 
 ```bash
