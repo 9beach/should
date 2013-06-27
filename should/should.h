@@ -107,7 +107,8 @@ should_be_equal_numbers_(
 		const char *func
 		);
 
-void should_be_not_equal_numbers_(
+void
+should_be_not_equal_numbers_(
 		int val1,
 		int val2,
 		const char *expr_str, 
