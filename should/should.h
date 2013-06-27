@@ -107,7 +107,7 @@ should_destroy_suite(
 		);
 
 /*!
- * \brief Destroy the test suite and its all children recursively
+ * \brief Destroys the test suite and its all children recursively
  */
 void
 should_destroy_suite_recursively(
