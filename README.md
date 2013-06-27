@@ -40,7 +40,7 @@ macro.
 should_be macro verifies a expression. if the expression is not true, it puts 
 error message (does not abort).
 
-### setup, teardown and fixture
+### setup, teardown, and fixture
 
 Fixture is a environment which is shared among test cases and/or suites of a 
 test suite.
