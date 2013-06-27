@@ -196,7 +196,7 @@ should_run_and_destroy_suite(
  * should_be macro verifies a expression. if the expression is not true,
  * it puts error message (does not abort).
  *
- * \subsection fixture_sec setup, teardown and fixture
+ * \subsection fixture_sec setup, teardown, and fixture
  *
  * Fixture is a environment which is shared among test cases and/or suites 
  * of a test suite.
