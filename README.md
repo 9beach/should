@@ -4,7 +4,8 @@ Minimal xUnit library for C programmers.
 
 I think today's most xUnit libraries are too much complex and there are
 some good reasons to "reinvent the wheel" of xUnit library. `shoud` simply and 
-justly supports the key concepts of [Kent Beck's original testing framework](http://www.xprogramming.com/testfram.htm).
+justly supports the key concepts of [Kent Beck's original testing framework]
+(http://www.xprogramming.com/testfram.htm).
 
 ## Installation
 
@@ -190,4 +191,5 @@ $ gcc test_fixture.c -lshould && ./a.out && rm -f a.out
 ```
 
 ## Reference
-* [Kent Beck's original testing framework paper](http://www.xprogramming.com/testfram.htm)
+* [Kent Beck's original testing framework paper]
+(http://www.xprogramming.com/testfram.htm)
