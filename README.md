@@ -70,8 +70,8 @@ void case_hello(void *fxtr)
         should_be_equal_strings("hello", b);
 
         /* using should_be_equal_strings is better to debug than using
-           should_be, because should_be_equal_strings macro shows each value of
-           the two parameters when it fails */
+         * should_be, because should_be_equal_strings macro shows each value of
+         * the two parameters when it fails */
         should_be(strcmp("hello", a) != 0);
         should_be(strcmp("hello", b) == 0);
 }
@@ -88,7 +88,7 @@ void case_world(void *fxtr)
 
 int main()
 {
-        /* we gonna make two test suites */
+        /* as a example, we gonna make two test suites */
         should_suite_t *s0;
         should_suite_t *s1;
 
@@ -129,7 +129,7 @@ $ gcc test_simple.c -lshould && ./a.out && rm -f a.out
 #include <assert.h>
 
 /* suppose that you implemented fwrite/ftell functions and 
-   want to verify them working correctly. */
+ * want to verify them working correctly. */
 
 void *setup()
 {
