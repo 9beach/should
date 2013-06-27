@@ -5,17 +5,17 @@ Minimal xUnit library for C programmers.
 ## Installation
 
 ```bash
-$ # install should library
+$ # get
 $ git clone git@github.com:9beach/should.git
+$ build
 $ cd should
 $ mkdir build
 $ cmake ..
 $ make
+$ # test
+$ make test # or `ctest' or `ctest --output-on-failure' as you like
+$ # install
 $ sudo make install
-$ # test should lib
-$ ctest 
-$ # or
-$ ctest --output-on-failure
 ```
 
 ## Glossary
@@ -103,8 +103,8 @@ Example with a fixture
 #include <stdlib.h>
 #include <assert.h>
 
-# Suppose that you implemented fwrite/ftell/fseek functions and 
-# want to verify them working correctly.
+/* suppose that you implemented fwrite/ftell functions and 
+   want to verify them working correctly. */
 
 void *setup()
 {
