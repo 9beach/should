@@ -50,7 +50,7 @@
 /*!
  * \brief Checks if the expression is true.
  *
- * Puts error message if fail.
+ * Puts error message if fails.
  */
 #define should_be(expr)				should_be_(expr, #expr \
 		, __FILE__, __LINE__, __func__)
@@ -58,7 +58,7 @@
 /*!
  * \brief Checks if two strings contains same letters.
  *
- * Puts error message if fail.
+ * Puts error message if fails.
  */
 #define should_be_equal_strings(val1, val2)	should_be_equal_strings_(val1, \
  		val2, #val1 " == " #val2, __FILE__, __LINE__, __func__)
@@ -74,7 +74,7 @@
 /*!
  * \brief Checks if two numbers are the same.
  *
- * Puts error message if fail.
+ * Puts error message if fails.
  */
 #define should_be_equal_numbers(val1, val2)	should_be_equal_numbers_(val1, \
  		val2, #val1 " == " #val2, __FILE__, __LINE__, __func__)
@@ -82,7 +82,7 @@
 /*!
  * \brief Checks if two numbers are not the same.
  *
- * Puts error message if fail.
+ * Puts error message if fails.
  */
 #define should_be_not_equal_numbers(val1, val2)	should_be_not_equal_numbers_(\
 		val1, val2, #val1 " != " #val2, __FILE__, __LINE__, __func__)
@@ -225,7 +225,7 @@ should_run_suite(
  * them.
  *
  * Internally, calls run_should_suite and destroy_should_suite_recursively.
- * \return 0 if all the test cases and suites of the suite succeeds
+ * \return 0 if all the test cases and suites of the suite succeed
  */
 int
 should_run_and_destroy_suite(
