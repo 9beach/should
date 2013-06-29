@@ -7,26 +7,36 @@
 void case_hello(void *fxtr)
 {
 	const char *a = "HELLO";
-	const char *b = "hello\0\0";
+	const char *b = "hello";
 
-	should_be_not_equal_strings("hello", a);
-	should_be_equal_strings("hello", b);
-
-	/* using should_be_equal_strings is better to debug than using 
-	 * should_be, because should_be_equal_strings macro shows each value of
+	/* using should_be_eq_str is better to debug than using 
+	 * should_be, because should_be_eq_str macro shows each value of
 	 * the two parameters when it fails */
 	should_be(strcmp("hello", a) != 0);
 	should_be(strcmp("hello", b) == 0);
+
+	should_be_ne_str("hello", a);
+	should_be_ne_str("HELLO", b);
+	should_be_eq_str("hello", b);
 }
 
 void case_world(void *fxtr)
 {
 	int a = 10;
 	int b = 20;
-	should_be_not_equal_numbers(a, b);
-	should_be_equal_numbers(a, 10);
+
 	should_be(a != b);
 	should_be(a == 10);
+
+	should_be_eq(a, 10);
+	should_be_eq(b, 20);
+	should_be_ne(a, 20);
+	should_be_ne(b, 10);
+	should_be_ne(10, 20);
+	should_be_ne(20, 10);
+	should_be_lt(9, 20);
+	should_be_le(9, 20);
+	should_be_le(9, 9);
 }
 
 int main()

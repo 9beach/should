@@ -63,50 +63,60 @@ for each suite and/or case.
 
 void case_hello(void *fxtr)
 {
-        const char *a = "HELLO";
-        const char *b = "hello\0\0";
+	const char *a = "HELLO";
+	const char *b = "hello";
 
-        should_be_not_equal_strings("hello", a);
-        should_be_equal_strings("hello", b);
+	/* using should_be_eq_str is better to debug than using 
+	 * should_be, because should_be_eq_str macro shows each value of
+	 * the two parameters when it fails */
+	should_be(strcmp("hello", a) != 0);
+	should_be(strcmp("hello", b) == 0);
 
-        /* using should_be_equal_strings is better to debug than using
-         * should_be, because should_be_equal_strings macro shows each value of
-         * the two parameters when it fails */
-        should_be(strcmp("hello", a) != 0);
-        should_be(strcmp("hello", b) == 0);
+	should_be_ne_str("hello", a);
+	should_be_ne_str("HELLO", b);
+	should_be_eq_str("hello", b);
 }
 
 void case_world(void *fxtr)
 {
-        int a = 10;
-        int b = 20;
-        should_be_not_equal_numbers(a, b);
-        should_be_equal_numbers(a, 10);
-        should_be(a != b);
-        should_be(a == 10);
+	int a = 10;
+	int b = 20;
+
+	should_be(a != b);
+	should_be(a == 10);
+
+	should_be_eq(a, 10);
+	should_be_eq(b, 20);
+	should_be_ne(a, 20);
+	should_be_ne(b, 10);
+	should_be_ne(10, 20);
+	should_be_ne(20, 10);
+	should_be_lt(9, 20);
+	should_be_le(9, 20);
+	should_be_le(9, 9);
 }
 
 int main()
 {
-        /* as a example, we gonna make two test suites */
-        should_suite_t *s0;
-        should_suite_t *s1;
+	/* we gonna make two test suites */
+	should_suite_t *s0;
+	should_suite_t *s1;
 
-        s0 = should_create_suite("main");
-        s1 = should_create_suite("sub");
+	s0 = should_create_suite("main");
+	s1 = should_create_suite("sub");
 
-        /* suite s0 has two test cases */
-        should_add_case(s0, case_hello);
-        should_add_case(s0, case_world);
+	/* suite s0 has two test cases */
+	should_add_case(s0, case_hello);
+	should_add_case(s0, case_world);
 
-        /* suite s1 has one test case */
-        should_add_case(s1, case_hello);
+	/* suite s1 has one test case */
+	should_add_case(s1, case_hello);
 
-        /* suite can have not only cases but also suites */
-        should_add_suite(s0, s1);
+	/* a suite can have not only cases but also suites */
+	should_add_suite(s0, s1);
 
-        /* and finally ... */
-        return should_run_and_destroy_suite(s0);
+	/* and finally ... */
+	return should_run_and_destroy_suite(s0);
 }
 ```
 
@@ -115,7 +125,7 @@ int main()
 $ gcc test_simple.c -lshould && ./a.out && rm -f a.out
 *** Running should_suite "main"...
 *** Running should_suite "sub"...
-*** No errors (out of 12 should_bes) detected in should_suite "main"
+*** No errors (out of 21 should_bes) detected in should_suite "main"
 ```
 
 ### Example with a fixture
@@ -149,24 +159,24 @@ void teardown(void *fxtr)
 
 void case_hello(void *fxtr)
 {
-        FILE *file = (FILE *)fxtr;
-        const char *buf = "hello";
+        FILE *file = fxtr;
+        const char *buf = "hello, ";
         const size_t cnt = strlen(buf);
 
-        assert(file);
-        should_be(cnt == fwrite(buf, sizeof(char), cnt, file));
-        should_be(ftell(file) == cnt);
+        assert(file && 0 == ftell(file));
+        should_be_eq(cnt, fwrite(buf, sizeof(char), cnt, file));
+        should_be_eq(cnt, ftell(file));
 }
 
 void case_world(void *fxtr)
 {
-        FILE *file = (FILE *)fxtr;
-        const char *buf = "world!!!";
+        FILE *file = fxtr;
+        const char *buf = "world!";
         const size_t cnt = strlen(buf);
 
-        assert(file);
-        should_be_equal_numbers(cnt, fwrite(buf, sizeof(char), cnt, file));
-        should_be_equal_numbers(ftell(file), cnt);
+        assert(file && 0 == ftell(file));
+        should_be_eq(cnt, fwrite(buf, sizeof(char), cnt, file));
+        should_be_eq(cnt, ftell(file));
 }
 
 int main()
@@ -177,8 +187,8 @@ int main()
 
         should_set_fixture(s0, setup, teardown);
 
-        should_add_case(s0, case_hello);
         should_add_case(s0, case_world);
+        should_add_case(s0, case_hello);
 
         return should_run_and_destroy_suite(s0);
 }

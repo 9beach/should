@@ -43,49 +43,102 @@
  */
 
 /* FIXME: Probably configure script is better place for the logic below. */
-#ifdef _WIN32
+#ifdef _MSC_VER
 #	define __func__ __FUNCTION__
 #endif
 
 /*!
- * \brief Checks if the expression is true.
+ * \brief Verifies that the expression is true.
  *
  * Puts error message if fails.
  */
 #define should_be(expr)				should_be_(expr, #expr \
-		, __FILE__, __LINE__, __func__)
+			, __FILE__, __LINE__, __func__)
 
 /*!
- * \brief Checks if two strings contains same letters.
+ * \brief Verifies that the expression is true.
+ *
+ * Puts error and given message if fails.
+ */
+#define should_be_msg(expr, msg)		should_be_msg_(expr, msg, \
+			#expr , __FILE__, __LINE__, __func__)
+
+/*!
+ * \brief Verifies that two parameters are the same (==).
  *
  * Puts error message if fails.
  */
-#define should_be_equal_strings(val1, val2)	should_be_equal_strings_(val1, \
- 		val2, #val1 " == " #val2, __FILE__, __LINE__, __func__)
+#define should_be_eq(val1, val2)		do { \
+			int x = val1; \
+			int y = val2; \
+			should_be_cmp_( \
+			x, y, #val1, #val2, x == y, "==", "!=", \
+			__FILE__, __LINE__, __func__); \
+			} while (0)
 
 /*!
- * \brief Checks if two strings contains different letters.
+ * \brief Verifies that two parameters are not the same (!=).
+ *
+ * Puts error message if fails.
+ */
+#define should_be_ne(val1, val2)		do { \
+			int x = val1; \
+			int y = val2; \
+			should_be_cmp_( \
+			x, y, #val1, #val2, x != y, "!=", "==", \
+			__FILE__, __LINE__, __func__); \
+			} while (0)
+/*!
+ * \brief Verifies that the first parameter is less than the second.
+ *
+ * Puts error message if fails.
+ */
+#define should_be_lt(val1, val2)		do { \
+			int x = val1; \
+			int y = val2; \
+			should_be_cmp_( \
+			x, y, #val1, #val2, x < y, "<", ">=", \
+			__FILE__, __LINE__, __func__); \
+			} while (0)
+
+/*!
+ * \brief Verifies that the first parameter is less than or equal to the second.
+ *
+ * Puts error message if fails.
+ */
+#define should_be_le(val1, val2)		do { \
+			int x = val1; \
+			int y = val2; \
+			should_be_cmp_( \
+			x, y, #val1, #val2, x <= y, "<=", ">", \
+			__FILE__, __LINE__, __func__); \
+			} while (0)
+
+/*!
+ * \brief Verifies that two strings contains same letters.
+ *
+ * Puts error message if fails.
+ */
+#define should_be_eq_str(val1, val2)		do { \
+			const char *x = val1; \
+			const char *y = val2; \
+			should_be_cmp_str_( \
+			x, y, #val1, #val2, strcmp(x, y) == 0, "==", \
+			"!=", __FILE__, __LINE__, __func__); \
+			} while (0)
+
+/*!
+ * \brief Verifies that two strings contains different letters.
  *
  * Puts error message if fail.
  */
-#define should_be_not_equal_strings(val1, val2)	should_be_not_equal_strings_(\
-		val1, val2, #val1 " != " #val2, __FILE__, __LINE__, __func__)
-
-/*!
- * \brief Checks if two numbers are the same.
- *
- * Puts error message if fails.
- */
-#define should_be_equal_numbers(val1, val2)	should_be_equal_numbers_(val1, \
- 		val2, #val1 " == " #val2, __FILE__, __LINE__, __func__)
-
-/*!
- * \brief Checks if two numbers are not the same.
- *
- * Puts error message if fails.
- */
-#define should_be_not_equal_numbers(val1, val2)	should_be_not_equal_numbers_(\
-		val1, val2, #val1 " != " #val2, __FILE__, __LINE__, __func__)
+#define should_be_ne_str(val1, val2)		do { \
+			const char *x = val1; \
+			const char *y = val2; \
+			should_be_cmp_str_( \
+			x, y, #val1, #val2, strcmp(x, y) != 0, "!=", \
+			"!=", __FILE__, __LINE__, __func__); \
+			} while (0)
 
 #ifdef __cplusplus
 extern "C" {
@@ -98,57 +151,6 @@ extern "C" {
  * performed by running a test suite.
  */
 typedef struct should_suite_t should_suite_t;
-
-/** \cond DOXYGEN_SHOULD_SKIP_THIS */
-void
-should_be_(
-		int expr,
-		const char *expr_str,
-		const char *file,
-		int line, 
-		const char *func
-		);
-
-void
-should_be_equal_strings_(
-		const char *val1,
-		const char *val2, 
-		const char *expr_str,
-		const char *file,
-		int line, 
-		const char *func
-		);
-
-void
-should_be_not_equal_strings_(
-		const char *val1,
-		const char *val2, 
-		const char *expr_str,
-		const char *file,
-		int line, 
-		const char *func
-		);
-
-void
-should_be_equal_numbers_(
-		int val1,
-		int val2,
-		const char *expr_str, 
-		const char *file,
-		int line,
-		const char *func
-		);
-
-void
-should_be_not_equal_numbers_(
-		int val1,
-		int val2,
-		const char *expr_str, 
-		const char *file,
-		int line,
-		const char *func
-		);
-/** \endcond */
 
 /*!
  * \brief Creates the test suite.
@@ -231,6 +233,55 @@ int
 should_run_and_destroy_suite(
 		should_suite_t *suite
 		);
+
+/** \cond DOXYGEN_SHOULD_SKIP_THIS */
+void
+should_be_(
+		int expr,
+		const char *expr_str,
+		const char *file,
+		int line, 
+		const char *func
+		);
+
+void
+should_be_msg_(
+		int expr,
+		const char *msg,
+		const char *expr_str,
+		const char *file,
+		int line, 
+		const char *func
+		);
+
+void
+should_be_cmp_(
+		int val1,
+		int val2,
+		const char *expr1,
+		const char *expr2,
+		int expr,
+		const char *cmp_str,
+		const char *rev_cmp_str,
+		const char *file,
+		int line,
+		const char *func
+		);
+
+void
+should_be_cmp_str_(
+		const char *val1,
+		const char *val2, 
+		const char *expr1,
+		const char *expr2,
+		int expr,
+		const char *cmp_str,
+		const char *rev_cmp_str,
+		const char *file,
+		int line,
+		const char *func
+		);
+/** \endcond */
 
 #ifdef __cplusplus
 }
