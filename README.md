@@ -44,15 +44,15 @@ it prints error message (does not abort).
 * `should_be(expr)` Verifies that the expression is true.
 * `should_be_with_msg(expr, msg)` Verifies that the expression is true. 
 Prints the given message if fails.
-* `should_be_eq(val1, val2)` Verifies that two parameters are the same.
-* `should_be_ne(val1, val2)` Verifies that two parameters are not the same.
-* `should_be_lt(val1, val2)` Verifies that the first parameter is less 
-than the second.
-* `should_be_le(val1, val2)` Verifies that the first parameter is less 
-than or equal to the second.
-* `should_be_eq_str(val1, val2)` Verifies that two strings contains same 
+* `should_be_eq(val1, val2)` Verifies that two numbers are the same.
+* `should_be_ne(val1, val2)` Verifies that two numbers are not the same.
+* `should_be_lt(val1, val2)` Verifies that the first number is less than the 
+second.
+* `should_be_le(val1, val2)` Verifies that the first number is less than or 
+equal to the second.
+* `should_be_eq_str(val1, val2)` Verifies that two strings contains the same 
 letters.
-* `should_be_ne_str(val1, val2)` Verifies that two strings contains 
+* `should_be_ne_str(val1, val2)` Verifies that two strings contains the
 different letters.
 
 ### Setup, Teardown, and Fixture

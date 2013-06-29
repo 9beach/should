@@ -5,7 +5,6 @@
  * \file should.h
  *
  * \brief Minimal xUnit library for C programmers
- *
  * \author Hyunrae Cho (9beach@gmail.com)
  * \date 2007/08/08
  */
@@ -15,6 +14,10 @@
  * \section intro_sec Introduction
  * 
  * SHOULD is a minimal xUnit for C programmers.
+ *
+ * I think today's most xUnit libraries are too much complex and there are some
+ * good reasons to "reinvent the wheel". SHOUD simply and justly supports the 
+ * key concepts of Kent Beck's original testing framework.
  *
  * \section glossary Glossary
  * \subsection test_suite_sec Test Suite
@@ -66,7 +69,7 @@
 			msg, #expr , __FILE__, __LINE__, __func__)
 
 /*!
- * \brief Verifies that two parameters are the same.
+ * \brief Verifies that two numbers are the same.
  *
  * Prints error message if fails.
  */
@@ -77,7 +80,7 @@
 			} while (0)
 
 /*!
- * \brief Verifies that two parameters are not the same.
+ * \brief Verifies that two numbers are not the same.
  *
  * Prints error message if fails.
  */
@@ -87,7 +90,7 @@
 			__FILE__, __LINE__, __func__); \
 			} while (0)
 /*!
- * \brief Verifies that the first parameter is less than the second.
+ * \brief Verifies that the first number is less than the second.
  *
  * Prints error message if fails.
  */
@@ -98,7 +101,7 @@
 			} while (0)
 
 /*!
- * \brief Verifies that the first parameter is less than or equal to the second.
+ * \brief Verifies that the first number is less than or equal to the second.
  *
  * Prints error message if fails.
  */
@@ -109,7 +112,7 @@
 			} while (0)
 
 /*!
- * \brief Verifies that two strings contains same letters.
+ * \brief Verifies that two strings contains the same letters.
  *
  * Prints error message if fails.
  */
@@ -121,7 +124,7 @@
 			} while (0)
 
 /*!
- * \brief Verifies that two strings contains different letters.
+ * \brief Verifies that two strings contains the different letters.
  *
  * Prints error message if fail.
  */
@@ -216,7 +219,6 @@ should_run_suite(
 
 /*!
  * \brief Runs all the test cases and suites of the suite, and destroys them.
- * them.
  *
  * Internally, calls run_should_suite and destroy_should_suite_recursively.
  * \return 0 if all the test cases and suites of the suite succeed
