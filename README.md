@@ -26,20 +26,21 @@ $ sudo make install
 
 ## Glossary
 
-### test suite
+### Test Suite
 
 A test suite can hold multiple test suites and/or test cases. Test is performed 
 by running a test suite.
 
-### test case
+### Test Case
 
 Test case is void (*)(void *) type function including at least one `should_be` 
 macro.
 
-### should_be macro
+### `should_be` macros
 
-`should_be` macro verifies a expression. If the expression is not true, 
+`should_be` macros verify a expression. If the expression is not true, 
 it prints error message (does not abort).
+
 * `should_be(expr)` Verifies that the expression is true.
 * `should_be_with_msg(expr, msg)` Verifies that the expression is true. 
 Prints the given message if fails.
@@ -54,7 +55,7 @@ letters.
 * `should_be_ne_str(val1, val2)` Verifies that two strings contains 
 different letters.
 
-### setup, teardown, and fixture
+### Setup, Teardown, and Fixture
 
 Fixture is a environment which is shared among test cases and/or suites of a 
 test suite.
@@ -65,8 +66,8 @@ for each suite and/or case.
 
 ## Quick Start
 
-### Simple example
-#### test_simple.c
+### Simple Example
+#### `test_simple.c`
 ```C
 #include <should/should.h>
 
@@ -123,7 +124,7 @@ int main()
 }
 ```
 
-#### Expected outputs
+#### Expected Outputs
 ```bash
 $ gcc test_simple.c -lshould && ./a.out && rm -f a.out
 *** Running should_suite "main"...
@@ -131,8 +132,8 @@ $ gcc test_simple.c -lshould && ./a.out && rm -f a.out
 *** No errors (out of 21 should_bes) detected in should_suite "main"
 ```
 
-### Example with a fixture
-#### test_fixture.c
+### Example with a Fixture
+#### `test_fixture.c`
 ```C
 #include <should/should.h>
 
@@ -197,7 +198,7 @@ int main()
 
 ```
 
-#### Expected outputs
+#### Expected Outputs
 ```bash
 $ gcc test_fixture.c -lshould && ./a.out && rm -f a.out
 *** Running should_suite "main"...
