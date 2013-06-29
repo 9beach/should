@@ -17,6 +17,7 @@ void case_world(void *fxtr)
 
 	should_be(a != b);
 	should_be(a == 10);
+	should_be_with_msg(a != 9, "OMG");
 
 	should_be_eq(a, 10);
 	should_be_eq(b, 20);
