@@ -60,7 +60,7 @@ different letters.
 Fixture is a environment which is shared among test cases and/or suites of a 
 test suite.
 
-You can initialize/finalize the fixture with the setup/teardown function. if a 
+You can initialize/finalize the fixture with the setup/teardown function. If a 
 suite has many suites and/or cases, the setup/teardown functions are called 
 for each of the suites and/or cases.
 

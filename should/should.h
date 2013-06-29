@@ -19,7 +19,7 @@
  * \section glossary Glossary
  * \subsection test_suite_sec Test Suite
  *
- * A test suite can hold multiple test suites and/or test cases. test is 
+ * A test suite can hold multiple test suites and/or test cases. Test is 
  * performed by running a test suite.
  *
  * \subsection test_case_sec Test Case
@@ -29,7 +29,7 @@
  *
  * \subsection should_be_sec should_be macros
  *
- * should_be macros verify a expression. if the expression is not true,
+ * should_be macros verify a expression. If the expression is not true,
  * it puts error message (does not abort).
  *
  * \subsection fixture_sec Setup, Teardown, and Fixture
