@@ -2,6 +2,15 @@
 #define SHOULD_H_
 
 /*!
+ * \file should.h
+ *
+ * \brief Minimal xUnit library for C programmers
+ *
+ * \author Hyunrae Cho (9beach@gmail.com)
+ * \date 2007/08/08
+ */
+
+/*!
  * \mainpage SHOULD
  * \section intro_sec Introduction
  * 
@@ -31,15 +40,6 @@
  * You can initialize/finalize the fixture with the setup/teardown function.
  * if a suite has many suites and/or cases, the setup/teardown functions 
  * are called for each suite and/or case.
- */
-
-/*!
- * \file should.h
- *
- * \brief Minimal xUnit library for C programmers
- *
- * \author Hyunrae Cho (9beach@gmail.com)
- * \date 2007/08/08
  */
 
 #include <string.h>
