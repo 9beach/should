@@ -53,7 +53,7 @@ should_be_(
 }
 
 void
-should_be_with_msg_(
+should_be_msg_(
 		int expr,
 		const char *msg,
 		const char *expr_str,

@@ -57,16 +57,16 @@
  *
  * Prints error message if fails.
  */
-#define should_be(expr)				should_be_((expr), #expr \
-			, __FILE__, __LINE__, __func__)
+#define should_be(expr)				should_be_((expr), #expr , \
+			__FILE__, __LINE__, __func__)
 
 /*!
  * \brief Verifies that the expression is true.
  *
  * Prints the given message if fails.
  */
-#define should_be_with_msg(expr, msg)		should_be_with_msg_((expr), \
-			msg, #expr , __FILE__, __LINE__, __func__)
+#define should_be_msg(expr, msg)		should_be_msg_((expr), msg, \
+			#expr , __FILE__, __LINE__, __func__)
 
 /*!
  * \brief Verifies that two numbers are the same.
@@ -239,7 +239,7 @@ should_be_(
 		);
 
 void
-should_be_with_msg_(
+should_be_msg_(
 		int expr,
 		const char *msg,
 		const char *expr_str,
