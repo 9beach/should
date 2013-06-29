@@ -1,7 +1,6 @@
 #include "should/should.h"
 
 #include <stdio.h>
-#include <string.h>
 #include <stdlib.h>
 #include <assert.h>
 
@@ -31,7 +30,7 @@ void case_hello(void *fxtr)
         const size_t cnt = strlen(buf);
 
         assert(file && 0 == ftell(file));
-        should_be_eq(cnt, fwrite(buf, sizeof(char), cnt, file));
+        should_be(cnt == fwrite(buf, sizeof(char), cnt, file));
         should_be_eq(cnt, ftell(file));
 }
 

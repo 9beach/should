@@ -42,6 +42,8 @@
  * \date 2007/08/08
  */
 
+#include <string.h>
+
 /* FIXME: Probably configure script is better place for the logic below. */
 #ifdef _MSC_VER
 #	define __func__ __FUNCTION__
@@ -50,94 +52,84 @@
 /*!
  * \brief Verifies that the expression is true.
  *
- * Puts error message if fails.
+ * Prints error message if fails.
  */
-#define should_be(expr)				should_be_(expr, #expr \
+#define should_be(expr)				should_be_((expr), #expr \
 			, __FILE__, __LINE__, __func__)
 
 /*!
  * \brief Verifies that the expression is true.
  *
- * Puts error and given message if fails.
+ * Prints the given message if fails.
  */
-#define should_be_msg(expr, msg)		should_be_msg_(expr, msg, \
-			#expr , __FILE__, __LINE__, __func__)
+#define should_be_with_msg(expr, msg)		should_be_with_msg_((expr), \
+			msg, #expr , __FILE__, __LINE__, __func__)
 
 /*!
- * \brief Verifies that two parameters are the same (==).
+ * \brief Verifies that two parameters are the same.
  *
- * Puts error message if fails.
+ * Prints error message if fails.
  */
 #define should_be_eq(val1, val2)		do { \
-			int x = val1; \
-			int y = val2; \
-			should_be_cmp_( \
-			x, y, #val1, #val2, x == y, "==", "!=", \
+			int x = (val1); int y = (val2); \
+			should_cmp_(x, y, #val1, #val2, x == y, "==", \
 			__FILE__, __LINE__, __func__); \
 			} while (0)
 
 /*!
- * \brief Verifies that two parameters are not the same (!=).
+ * \brief Verifies that two parameters are not the same.
  *
- * Puts error message if fails.
+ * Prints error message if fails.
  */
 #define should_be_ne(val1, val2)		do { \
-			int x = val1; \
-			int y = val2; \
-			should_be_cmp_( \
-			x, y, #val1, #val2, x != y, "!=", "==", \
+			int x = (val1); int y = (val2); \
+			should_cmp_(x, y, #val1, #val2, x != y, "!=", \
 			__FILE__, __LINE__, __func__); \
 			} while (0)
 /*!
  * \brief Verifies that the first parameter is less than the second.
  *
- * Puts error message if fails.
+ * Prints error message if fails.
  */
 #define should_be_lt(val1, val2)		do { \
-			int x = val1; \
-			int y = val2; \
-			should_be_cmp_( \
-			x, y, #val1, #val2, x < y, "<", ">=", \
+			int x = (val1); int y = (val2); \
+			should_cmp_(x, y, #val1, #val2, x < y, "<", \
 			__FILE__, __LINE__, __func__); \
 			} while (0)
 
 /*!
  * \brief Verifies that the first parameter is less than or equal to the second.
  *
- * Puts error message if fails.
+ * Prints error message if fails.
  */
 #define should_be_le(val1, val2)		do { \
-			int x = val1; \
-			int y = val2; \
-			should_be_cmp_( \
-			x, y, #val1, #val2, x <= y, "<=", ">", \
+			int x = (val1); int y = (val2); \
+			should_cmp_(x, y, #val1, #val2, x <= y, "<=", \
 			__FILE__, __LINE__, __func__); \
 			} while (0)
 
 /*!
  * \brief Verifies that two strings contains same letters.
  *
- * Puts error message if fails.
+ * Prints error message if fails.
  */
 #define should_be_eq_str(val1, val2)		do { \
-			const char *x = val1; \
-			const char *y = val2; \
-			should_be_cmp_str_( \
-			x, y, #val1, #val2, strcmp(x, y) == 0, "==", \
-			"!=", __FILE__, __LINE__, __func__); \
+			const char *x = (val1); const char *y = (val2); \
+			should_cmp_str_(x, y, #val1, #val2, \
+			!strcmp(x, y), "==", \
+			__FILE__, __LINE__, __func__); \
 			} while (0)
 
 /*!
  * \brief Verifies that two strings contains different letters.
  *
- * Puts error message if fail.
+ * Prints error message if fail.
  */
 #define should_be_ne_str(val1, val2)		do { \
-			const char *x = val1; \
-			const char *y = val2; \
-			should_be_cmp_str_( \
-			x, y, #val1, #val2, strcmp(x, y) != 0, "!=", \
-			"!=", __FILE__, __LINE__, __func__); \
+			const char *x = (val1); const char *y = (val2); \
+			should_cmp_str_(x, y, #val1, #val2, \
+			strcmp(x, y), "!=", \
+			__FILE__, __LINE__, __func__); \
 			} while (0)
 
 #ifdef __cplusplus
@@ -245,7 +237,7 @@ should_be_(
 		);
 
 void
-should_be_msg_(
+should_be_with_msg_(
 		int expr,
 		const char *msg,
 		const char *expr_str,
@@ -255,28 +247,26 @@ should_be_msg_(
 		);
 
 void
-should_be_cmp_(
+should_cmp_(
 		int val1,
 		int val2,
 		const char *expr1,
 		const char *expr2,
 		int expr,
 		const char *cmp_str,
-		const char *rev_cmp_str,
 		const char *file,
 		int line,
 		const char *func
 		);
 
 void
-should_be_cmp_str_(
+should_cmp_str_(
 		const char *val1,
 		const char *val2, 
 		const char *expr1,
 		const char *expr2,
 		int expr,
 		const char *cmp_str,
-		const char *rev_cmp_str,
 		const char *file,
 		int line,
 		const char *func

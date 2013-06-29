@@ -28,18 +28,31 @@ $ sudo make install
 
 ### test suite
 
-A test suite can hold multiple test suites and/or test cases. test is performed 
+A test suite can hold multiple test suites and/or test cases. Test is performed 
 by running a test suite.
 
 ### test case
 
-Test case is void (*)(void *) type function including at least one should_be 
-macro.
+Test case is void (*)(void *) type function including at least one 
+```should_be``` macro.
 
-### should_be
+### should_be macro
 
-should_be macro verifies a expression. if the expression is not true, it puts 
-error message (does not abort).
+```should_be``` macro verifies a expression. If the expression is not true, 
+it prints error message (does not abort).
+* ```should_be(expr)``` Verifies that the expression is true.
+* ```should_be_with_msg(expr, msg)``` Verifies that the expression is true. 
+Prints the given message if fails.
+* ```should_be_eq(val1, val2)``` Verifies that two parameters are the same.
+* ```should_be_ne(val1, val2)``` Verifies that two parameters are not the same.
+* ```should_be_lt(val1, val2)``` Verifies that the first parameter is less 
+than the second.
+* ```should_be_le(val1, val2)``` Verifies that the first parameter is less 
+than or equal to the second.
+* ```should_be_eq_str(val1, val2)``` Verifies that two strings contains same 
+letters.
+* ```should_be_ne_str(val1, val2)``` Verifies that two strings contains 
+different letters.
 
 ### setup, teardown, and fixture
 
@@ -57,20 +70,10 @@ for each suite and/or case.
 ```C
 #include <should/should.h>
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
 void case_hello(void *fxtr)
 {
 	const char *a = "HELLO";
 	const char *b = "hello";
-
-	/* using should_be_eq_str is better to debug than using 
-	 * should_be, because should_be_eq_str macro shows each value of
-	 * the two parameters when it fails */
-	should_be(strcmp("hello", a) != 0);
-	should_be(strcmp("hello", b) == 0);
 
 	should_be_ne_str("hello", a);
 	should_be_ne_str("HELLO", b);
@@ -134,7 +137,6 @@ $ gcc test_simple.c -lshould && ./a.out && rm -f a.out
 #include <should/should.h>
 
 #include <stdio.h>
-#include <string.h>
 #include <stdlib.h>
 #include <assert.h>
 
@@ -164,7 +166,7 @@ void case_hello(void *fxtr)
         const size_t cnt = strlen(buf);
 
         assert(file && 0 == ftell(file));
-        should_be_eq(cnt, fwrite(buf, sizeof(char), cnt, file));
+        should_be(cnt == fwrite(buf, sizeof(char), cnt, file));
         should_be_eq(cnt, ftell(file));
 }
 
@@ -192,6 +194,7 @@ int main()
 
         return should_run_and_destroy_suite(s0);
 }
+
 ```
 
 #### Expected outputs

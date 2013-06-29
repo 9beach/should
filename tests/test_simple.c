@@ -1,19 +1,9 @@
 #include "should/should.h"
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
 void case_hello(void *fxtr)
 {
 	const char *a = "HELLO";
 	const char *b = "hello";
-
-	/* using should_be_eq_str is better to debug than using 
-	 * should_be, because should_be_eq_str macro shows each value of
-	 * the two parameters when it fails */
-	should_be(strcmp("hello", a) != 0);
-	should_be(strcmp("hello", b) == 0);
 
 	should_be_ne_str("hello", a);
 	should_be_ne_str("HELLO", b);
