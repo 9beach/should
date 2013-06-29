@@ -62,7 +62,7 @@ test suite.
 
 You can initialize/finalize the fixture with the setup/teardown function. if a 
 suite has many suites and/or cases, the setup/teardown functions are called 
-for each suite and/or case.
+for each of the suites and/or cases.
 
 ## Quick Start
 
