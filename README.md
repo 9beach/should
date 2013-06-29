@@ -33,25 +33,25 @@ by running a test suite.
 
 ### test case
 
-Test case is void (*)(void *) type function including at least one 
-```should_be``` macro.
+Test case is void (*)(void *) type function including at least one `should_be` 
+macro.
 
 ### should_be macro
 
-```should_be``` macro verifies a expression. If the expression is not true, 
+`should_be` macro verifies a expression. If the expression is not true, 
 it prints error message (does not abort).
-* ```should_be(expr)``` Verifies that the expression is true.
-* ```should_be_with_msg(expr, msg)``` Verifies that the expression is true. 
+* `should_be(expr)` Verifies that the expression is true.
+* `should_be_with_msg(expr, msg)` Verifies that the expression is true. 
 Prints the given message if fails.
-* ```should_be_eq(val1, val2)``` Verifies that two parameters are the same.
-* ```should_be_ne(val1, val2)``` Verifies that two parameters are not the same.
-* ```should_be_lt(val1, val2)``` Verifies that the first parameter is less 
+* `should_be_eq(val1, val2)` Verifies that two parameters are the same.
+* `should_be_ne(val1, val2)` Verifies that two parameters are not the same.
+* `should_be_lt(val1, val2)` Verifies that the first parameter is less 
 than the second.
-* ```should_be_le(val1, val2)``` Verifies that the first parameter is less 
+* `should_be_le(val1, val2)` Verifies that the first parameter is less 
 than or equal to the second.
-* ```should_be_eq_str(val1, val2)``` Verifies that two strings contains same 
+* `should_be_eq_str(val1, val2)` Verifies that two strings contains same 
 letters.
-* ```should_be_ne_str(val1, val2)``` Verifies that two strings contains 
+* `should_be_ne_str(val1, val2)` Verifies that two strings contains 
 different letters.
 
 ### setup, teardown, and fixture
@@ -203,7 +203,14 @@ $ gcc test_fixture.c -lshould && ./a.out && rm -f a.out
 *** Running should_suite "main"...
 *** No errors (out of 4 should_bes) detected in should_suite "main"
 ```
-
+### Failure Examples
+```
+*** Running should_suite "main"...
+should_be failed: ("HELLO" == b) -> not ("HELLO" == "hello") in "case_hello", /home/seafarer/should/tests/test_simple.c (9)
+should_be failed: (b == 10) -> not (20 == 10) in "case_world", /home/seafarer/should/tests/test_simple.c (24)
+should_be failed: (39 < 20) -> not (39 < 20) in "case_world", /home/seafarer/should/tests/test_simple.c (27)
+*** 3 failures (out of 14 should_bes) detected in should_suite "main"
+```
 ## Reference
 * [Kent Beck's original testing framework paper]
 (http://www.xprogramming.com/testfram.htm)
