@@ -9,52 +9,52 @@
 
 void *setup()
 {
-        FILE *file = tmpfile();
-        if (!file)
-                abort();
-        return file;
+	FILE *file = tmpfile();
+	if (!file)
+		abort();
+	return file;
 }
 
 void teardown(void *fxtr)
 {
-        FILE *file = (FILE *)fxtr;
+	FILE *file = (FILE *)fxtr;
 
-        assert(file);
-        fclose(file);
+	assert(file);
+	fclose(file);
 }
 
 void case_hello(void *fxtr)
 {
-        FILE *file = fxtr;
-        const char *buf = "hello, ";
-        const size_t cnt = strlen(buf);
+	FILE *file = fxtr;
+	const char *buf = "hello, ";
+	const size_t cnt = strlen(buf);
 
-        assert(file && 0 == ftell(file));
-        should_be(cnt == fwrite(buf, sizeof(char), cnt, file));
-        should_be_eq(cnt, ftell(file));
+	assert(file && 0 == ftell(file));
+	should_be(cnt == fwrite(buf, sizeof(char), cnt, file));
+	should_be_eq(cnt, ftell(file));
 }
 
 void case_world(void *fxtr)
 {
-        FILE *file = fxtr;
-        const char *buf = "world!";
-        const size_t cnt = strlen(buf);
+	FILE *file = fxtr;
+	const char *buf = "world!";
+	const size_t cnt = strlen(buf);
 
-        assert(file && 0 == ftell(file));
-        should_be_eq(cnt, fwrite(buf, sizeof(char), cnt, file));
-        should_be_eq(cnt, ftell(file));
+	assert(file && 0 == ftell(file));
+	should_be_eq(cnt, fwrite(buf, sizeof(char), cnt, file));
+	should_be_eq(cnt, ftell(file));
 }
 
 int main()
 {
-        should_suite_t *s0;
+	should_suite_t *s0;
 
-        s0 = should_create_suite("main");
+	s0 = should_create_suite("main");
 
-        should_set_fixture(s0, setup, teardown);
+	should_set_fixture(s0, setup, teardown);
 
-        should_add_case(s0, case_world);
-        should_add_case(s0, case_hello);
+	should_add_case(s0, case_world);
+	should_add_case(s0, case_hello);
 
-        return should_run_and_destroy_suite(s0);
+	return should_run_and_destroy_suite(s0);
 }

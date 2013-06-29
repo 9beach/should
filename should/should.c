@@ -22,7 +22,7 @@ typedef struct should_unit_t {
 	union {
 		void (*case_func)();
 		should_suite_t *suite;
-	} unit; /* not all compiler support unnamed union */
+	} unit; /* not all compilers support unnamed union */
 } should_unit_t;
 
 struct should_suite_t {
