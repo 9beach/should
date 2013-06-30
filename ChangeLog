@@ -1,2 +1,12 @@
+2013-06-30  Hyunrae Cho  <9beach@gmail.com>
+
+	* should/should.h: Add new should_be macros: should_be_msg, 
+	should_be_eq, should_be_ne, should_be_lt, should_be_le, 
+	should_be_eq_str, should_be_ne_str.
+	* should/should.c: Add new functions: should_cmp_(), should_cmp_str_().
+	* tests/CMakeLists.txt: Use SHOULD_SOURCE_DIR, SHOULD_BINARY_DIR 
+	variables with the instruction of CMake tutorials.
+
 2013-06-23  Hyunrae Cho  <9beach@gmail.com>
+
 	* Version 0.4: Initial commit.
