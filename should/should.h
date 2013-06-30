@@ -16,7 +16,7 @@
  * SHOULD is a minimal xUnit for C programmers.
  *
  * I think today's most xUnit libraries are too much complex and there are some
- * good reasons to "reinvent the wheel". SHOUD simply and justly supports the 
+ * good reasons to "reinvent the wheel". SHOULD simply and justly supports the 
  * key concepts of Kent Beck's original testing framework.
  *
  * \section glossary Glossary
@@ -41,7 +41,7 @@
  * of a test suite.
  *
  * You can initialize/finalize the fixture with the setup/teardown function.
- * if a suite has many suites and/or cases, the setup/teardown functions 
+ * If a suite has many suites and/or cases, the setup/teardown functions 
  * are called for each of the suites and/or cases.
  */
 
