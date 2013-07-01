@@ -154,36 +154,23 @@ typedef struct should_suite_t should_suite_t;
  * \param name just for displaying
  * \return 0 if malloc fails
  */
-should_suite_t *
-should_create_suite(
-		const char *name
-		);
+should_suite_t * should_create_suite(const char *name);
 
 /*!
  * \brief Destroys the test suite.
  */
-void
-should_destroy_suite(
-		should_suite_t *suite
-		);
+void should_destroy_suite(should_suite_t *suite);
 
 /*!
  * \brief Destroys the test suite and all its children recursively.
  */
-void
-should_destroy_suite_recursively(
-		should_suite_t *suite
-		);
+void should_destroy_suite_recursively(should_suite_t *suite);
 
 /*!
  * \brief Adds the test suite to the parent.
  * \return 0 if malloc succeeds
  */
-int
-should_add_suite(
-		should_suite_t *parent,
-		should_suite_t *suite
-		);
+int should_add_suite(should_suite_t *parent, should_suite_t *suite);
 
 /*!
  * \brief Sets the setup/teardown functions to the test suite.
@@ -191,31 +178,20 @@ should_add_suite(
  * If the suite has many suites and/or cases, the setup/teardown functions 
  * are called for each of them.
  */
-void
-should_set_fixture(
-		should_suite_t *suite,
-		void *(*setup)(),
-		void (*teardown)(void *)
-		);
+void should_set_fixture(should_suite_t *suite, void *(*setup)(),
+		void (*teardown)(void *));
 
 /*!
  * \brief Adds the test case to the test suite.
  * \return 0 if malloc succeeds
  */
-int
-should_add_case(
-		should_suite_t *suite,
-		void (*case_func)(void *)
-		);
+int should_add_case(should_suite_t *suite, void (*case_func)(void *));
 
 /*!
  * \brief Runs all the test cases and suites of the test suite.
  * \return 0 if all the test cases and suites of the suite succeed
  */
-int
-should_run_suite(
-		should_suite_t *suite
-		);
+int should_run_suite(should_suite_t *suite);
 
 /*!
  * \brief Runs all the test cases and suites of the suite, and destroys them.
@@ -223,56 +199,22 @@ should_run_suite(
  * Internally, calls run_should_suite and destroy_should_suite_recursively.
  * \return 0 if all the test cases and suites of the suite succeed
  */
-int
-should_run_and_destroy_suite(
-		should_suite_t *suite
-		);
+int should_run_and_destroy_suite(should_suite_t *suite);
 
 /** \cond DOXYGEN_SHOULD_SKIP_THIS */
-void
-should_be_(
-		int expr,
-		const char *expr_str,
-		const char *file,
-		int line, 
-		const char *func
-		);
+void should_be_(int expr, const char *expr_str, const char *file, int line, 
+		const char *func);
 
-void
-should_be_msg_(
-		int expr,
-		const char *msg,
-		const char *expr_str,
-		const char *file,
-		int line, 
-		const char *func
-		);
+void should_be_msg_(int expr, const char *msg, const char *expr_str,
+		const char *file, int line, const char *func);
 
-void
-should_cmp_(
-		int val1,
-		int val2,
-		const char *expr1,
-		const char *expr2,
-		int expr,
-		const char *cmp_str,
-		const char *file,
-		int line,
-		const char *func
-		);
+void should_cmp_(int val1, int val2, const char *expr1, const char *expr2,
+		int expr, const char *cmp_str, const char *file, int line,
+		const char *func);
 
-void
-should_cmp_str_(
-		const char *val1,
-		const char *val2, 
-		const char *expr1,
-		const char *expr2,
-		int expr,
-		const char *cmp_str,
-		const char *file,
-		int line,
-		const char *func
-		);
+void should_cmp_str_(const char *val1, const char *val2, const char *expr1,
+		const char *expr2, int expr, const char *cmp_str,
+		const char *file, int line, const char *func);
 /** \endcond */
 
 #ifdef __cplusplus

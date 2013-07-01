@@ -33,102 +33,10 @@ struct should_suite_t {
 	int size;
 };
 
-void
-should_be_(
-		int expr,
-		const char *expr_str,
-		const char *file, 
-		int line,
-		const char *func
-		)
-{
-	assert(expr_str && file && line && func);
-	if (0 != expr) {
-		++success_count_;
-	} else {
-		++failure_count_;
-		printf("should_be failed: (%s) in \"%s\", %s (%d)\n", 
-				expr_str, func, file, line); 
-	}
-}
-
-void
-should_be_msg_(
-		int expr,
-		const char *msg,
-		const char *expr_str,
-		const char *file, 
-		int line,
-		const char *func
-		)
-{
-	assert(expr_str && file && line && func);
-	if (0 != expr) {
-		++success_count_;
-	} else {
-		++failure_count_;
-		printf("should_be failed: \"%s\" (%s) in \"%s\", %s (%d)\n", 
-				msg, expr_str, func, file, line); 
-	}
-}
-
-void
-should_cmp_(
-		int val1,
-		int val2,
-		const char *expr1,
-		const char *expr2, 
-		int expr,
-		const char *cmp_str,
-		const char *file,
-		int line, 
-		const char *func
-		)
-{
-	assert(expr1 && expr2 && cmp_str && file && line && func);
-	if (expr) {
-		++success_count_;
-	} else {
-		++failure_count_;
-		printf("should_be failed: (%s %s %s) -> not (%d %s %d) "
-				"in \"%s\", %s (%d)\n", 
-				expr1, cmp_str, expr2, val1, cmp_str, val2, 
-				func, file, line); 
-	}
-}
-
-void
-should_cmp_str_(
-		const char *val1,
-		const char *val2, 
-		const char *expr1,
-		const char *expr2, 
-		int expr,
-		const char *cmp_str,
-		const char *file,
-		int line, 
-		const char *func
-		)
-{
-	assert(expr1 && expr2 && cmp_str && file && line && func);
-	if (expr) {
-		++success_count_;
-	} else {
-		++failure_count_;
-		printf("should_be failed: (%s %s %s) -> not (\"%s\" %s \"%s\") "
-				"in \"%s\", %s (%d)\n", 
-				expr1, cmp_str, expr2, val1, cmp_str, val2, 
-				func, file, line); 
-	}
-}
-
-should_suite_t *
-should_create_suite(
-		const char *name
-		)
+should_suite_t * should_create_suite(const char *name)
 {
 	should_suite_t *suite = 
-		(should_suite_t *)malloc(sizeof(should_suite_t));
+			(should_suite_t *)malloc(sizeof(should_suite_t));
 
 	if (0 == suite)
 		return 0;
@@ -142,10 +50,7 @@ should_create_suite(
 	return suite;
 }
 
-void
-should_destroy_suite(
-		should_suite_t *suite
-		)
+void should_destroy_suite(should_suite_t *suite)
 {
 	assert(suite);
 
@@ -154,10 +59,7 @@ should_destroy_suite(
 	free(suite);
 }
 
-void
-should_destroy_suite_recursively(
-		should_suite_t *suite
-		)
+void should_destroy_suite_recursively(should_suite_t *suite)
 {
 	int i;
 	assert(suite);
@@ -165,17 +67,13 @@ should_destroy_suite_recursively(
 	for (i = 0; i < suite->size; ++i) {
 		if (suite->units[i].type != SHOULD_UNIT_TYPE_CASE) {
 			should_destroy_suite_recursively(
-				suite->units[i].unit.suite);
+					suite->units[i].unit.suite);
 		}
 	}
 	should_destroy_suite(suite);
 }
 
-int
-should_add_case(
-		should_suite_t *suite,
-		void (*case_func)(void *)
-		)
+int should_add_case(should_suite_t *suite, void (*case_func)(void *))
 {
 	should_unit_t *new_case;
 
@@ -194,11 +92,7 @@ should_add_case(
 	return 0;
 }
 
-int
-should_add_suite(
-		should_suite_t *owner,
-		should_suite_t *suite
-		)
+int should_add_suite(should_suite_t *owner, should_suite_t *suite)
 {
 	should_unit_t *new_suite;
 
@@ -217,23 +111,15 @@ should_add_suite(
 	return 0;
 }
 
-void
-should_set_fixture(
-		should_suite_t *suite,
-		void *(*setup)(void *),
-		void (*teardown)(void *)
-		)
+void should_set_fixture(should_suite_t *suite, void *(*setup)(void *),
+		void (*teardown)(void *))
 {
 	assert(suite);
 	suite->setup = setup;
 	suite->teardown = teardown;
 }
 
-static void 
-run_a_case_(
-		should_suite_t *suite,
-		should_unit_t *unit
-		)
+static void run_a_case_(should_suite_t *suite, should_unit_t *unit)
 {
 	void *fxtr = 0;
 
@@ -253,10 +139,7 @@ run_a_case_(
 		(*suite->teardown)(fxtr);
 }
 
-static void 
-run_suite_recursively_(
-		should_suite_t *suite
-		)
+static void run_suite_recursively_(should_suite_t *suite)
 {
 	void *fxtr = 0;
 	int i;
@@ -278,10 +161,7 @@ run_suite_recursively_(
 	}
 }
 
-int
-should_run_suite(
-		should_suite_t *suite
-		)
+int should_run_suite(should_suite_t *suite)
 {
 	success_count_ = 0;
 	failure_count_ = 0;
@@ -306,10 +186,7 @@ should_run_suite(
 	return (failure_count_ != 0);
 }
 
-int
-should_run_and_destroy_suite(
-		should_suite_t *suite
-		)
+int should_run_and_destroy_suite(should_suite_t *suite)
 {
 	int ret;
 
@@ -320,3 +197,60 @@ should_run_and_destroy_suite(
 	return ret;
 }
 
+void should_be_(int expr, const char *expr_str, const char *file, int line,
+		const char *func)
+{
+	assert(expr_str && file && line && func);
+	if (0 != expr) {
+		++success_count_;
+	} else {
+		++failure_count_;
+		printf("should_be failed: (%s) in \"%s\", %s (%d)\n", 
+				expr_str, func, file, line); 
+	}
+}
+
+void should_be_msg_(int expr, const char *msg, const char *expr_str,
+		const char *file, int line, const char *func)
+{
+	assert(expr_str && file && line && func);
+	if (0 != expr) {
+		++success_count_;
+	} else {
+		++failure_count_;
+		printf("should_be failed: \"%s\" (%s) in \"%s\", %s (%d)\n", 
+				msg, expr_str, func, file, line); 
+	}
+}
+
+void should_cmp_(int val1, int val2, const char *expr1, const char *expr2, 
+		int expr, const char *cmp_str, const char *file, int line, 
+		const char *func)
+{
+	assert(expr1 && expr2 && cmp_str && file && line && func);
+	if (expr) {
+		++success_count_;
+	} else {
+		++failure_count_;
+		printf("should_be failed: (%s %s %s) -> not (%d %s %d) "
+				"in \"%s\", %s (%d)\n", 
+				expr1, cmp_str, expr2, val1, cmp_str, val2, 
+				func, file, line); 
+	}
+}
+
+void should_cmp_str_(const char *val1, const char *val2, const char *expr1,
+		const char *expr2, int expr, const char *cmp_str,
+		const char *file, int line, const char *func)
+{
+	assert(expr1 && expr2 && cmp_str && file && line && func);
+	if (expr) {
+		++success_count_;
+	} else {
+		++failure_count_;
+		printf("should_be failed: (%s %s %s) -> not (\"%s\" %s \"%s\") "
+				"in \"%s\", %s (%d)\n", 
+				expr1, cmp_str, expr2, val1, cmp_str, val2, 
+				func, file, line); 
+	}
+}
