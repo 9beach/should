@@ -29,7 +29,7 @@ void case_hello(void *fxtr)
 	const char *buf = "hello, ";
 	const size_t cnt = strlen(buf);
 
-	assert(file && 0 == ftell(file));
+	should_be_eq(0, ftell(file));
 	should_be_msg(cnt == fwrite(buf, sizeof(char), cnt, file), 
 		"Could've Been");
 	should_be_eq(cnt, ftell(file));
@@ -41,7 +41,7 @@ void case_world(void *fxtr)
 	const char *buf = "world!";
 	const size_t cnt = strlen(buf);
 
-	assert(file && 0 == ftell(file));
+	should_be_eq(0, ftell(file));
 	should_be_eq(cnt, fwrite(buf, sizeof(char), cnt, file));
 	should_be_eq(cnt, ftell(file));
 }
@@ -50,7 +50,10 @@ int main()
 {
 	should_suite_t *s0;
 
-	s0 = should_create_suite("main");
+	s0 = should_create_suite("fixture test");
+	if (!s0) {
+	    abort();
+	}
 
 	should_set_fixture(s0, setup, teardown);
 

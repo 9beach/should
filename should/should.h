@@ -22,8 +22,8 @@
  * \section glossary Glossary
  * \subsection test_suite_sec Test Suite
  *
- * A test suite can hold multiple test suites and/or test cases. Test is 
- * performed by running a test suite.
+ * A test suite can hold multiple test cases. Test is performed by running a 
+ * test suite.
  *
  * \subsection test_case_sec Test Case
  *
@@ -69,7 +69,7 @@
 			#expr , __FILE__, __LINE__, __func__)
 
 /*!
- * \brief Verifies that two numbers are the same.
+ * \brief Verifies that two integers are the same.
  *
  * Prints error message if fails.
  */
@@ -80,7 +80,7 @@
 			} while (0)
 
 /*!
- * \brief Verifies that two numbers are not the same.
+ * \brief Verifies that two integers are not the same.
  *
  * Prints error message if fails.
  */
@@ -90,7 +90,7 @@
 			__FILE__, __LINE__, __func__); \
 			} while (0)
 /*!
- * \brief Verifies that the first number is less than the second.
+ * \brief Verifies that the first integer is less than the second.
  *
  * Prints error message if fails.
  */
@@ -101,7 +101,7 @@
 			} while (0)
 
 /*!
- * \brief Verifies that the first number is less than or equal to the second.
+ * \brief Verifies that the first integer is less than or equal to the second.
  *
  * Prints error message if fails.
  */
@@ -142,8 +142,8 @@ extern "C" {
 /*!
  * \brief Test suite structure
  *
- * A test suite can hold multiple test suites and/or test cases. Test is 
- * performed by running a test suite.
+ * A test suite can hold multiple test cases. Test is performed by running a 
+ * test suite.
  */
 typedef struct should_suite_t should_suite_t;
 
@@ -154,17 +154,12 @@ typedef struct should_suite_t should_suite_t;
  * \param name just for displaying
  * \return 0 if malloc fails
  */
-should_suite_t * should_create_suite(const char *name);
+should_suite_t *should_create_suite(const char *name);
 
 /*!
  * \brief Destroys the test suite.
  */
 void should_destroy_suite(should_suite_t *suite);
-
-/*!
- * \brief Destroys the test suite and all its children recursively.
- */
-void should_destroy_suite_recursively(should_suite_t *suite);
 
 /*!
  * \brief Adds the test suite to the parent.
@@ -196,7 +191,7 @@ int should_run_suite(should_suite_t *suite);
 /*!
  * \brief Runs all the test cases and suites of the suite, and destroys them.
  *
- * Internally, calls run_should_suite and destroy_should_suite_recursively.
+ * Internally, calls run_should_suite and destroy_should_suite.
  * \return 0 if all the test cases and suites of the suite succeed
  */
 int should_run_and_destroy_suite(should_suite_t *suite);

@@ -1,5 +1,7 @@
 #include "should/should.h"
 
+#include <stdlib.h>
+
 void case_hello(void *fxtr)
 {
 	const char *a = "HELLO";
@@ -32,12 +34,21 @@ void case_world(void *fxtr)
 
 int main()
 {
-	/* we gonna make two test suites */
+	int ret0, ret1;
+
+	/* as a example, we gonna make two test suites */
 	should_suite_t *s0;
 	should_suite_t *s1;
 
-	s0 = should_create_suite("main");
-	s1 = should_create_suite("sub");
+	s0 = should_create_suite("simple test A");
+	if (!s0) {
+	    abort();
+	}
+
+	s1 = should_create_suite("simple test B");
+	if (!s1) {
+	    abort();
+	}
 
 	/* suite s0 has two test cases */
 	should_add_case(s0, case_hello);
@@ -46,9 +57,9 @@ int main()
 	/* suite s1 has one test case */
 	should_add_case(s1, case_hello);
 
-	/* a suite can have not only cases but also suites */
-	should_add_suite(s0, s1);
-
 	/* and finally ... */
-	return should_run_and_destroy_suite(s0);
+	ret0 = should_run_and_destroy_suite(s0);
+	ret1 = should_run_and_destroy_suite(s1);
+
+	return ret0 || ret1;
 }
