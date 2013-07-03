@@ -13,6 +13,10 @@
 	* tests/CMakeLists.txt: Use SHOULD_SOURCE_DIR, SHOULD_BINARY_DIR 
 	variables with the instruction of CMake tutorials.
 
+2013-06-23  Hyunrae Cho  <9beach@gmail.com>
+
+	* Initial commit to github.
+
 2007-08-08  Hyunrae Cho  <9beach@gmail.com>
 
-	* Initial commit.
+	* Initial version.
