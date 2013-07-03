@@ -1,3 +1,9 @@
+2013-07-03  Hyunrae Cho  <9beach@gmail.com>
+
+	* Version 0.5.1.
+	* should/CMakeLists.txt: Convert from a static lib to a shared lib, and
+	use PROPERTIES VERSION and SOVERSION.
+
 2013-06-30  Hyunrae Cho  <9beach@gmail.com>
 
 	* should/should.h: Add new should_be macros: should_be_msg, 
@@ -7,6 +13,6 @@
 	* tests/CMakeLists.txt: Use SHOULD_SOURCE_DIR, SHOULD_BINARY_DIR 
 	variables with the instruction of CMake tutorials.
 
-2013-06-23  Hyunrae Cho  <9beach@gmail.com>
+2007-08-08  Hyunrae Cho  <9beach@gmail.com>
 
-	* Version 0.4: Initial commit.
+	* Initial commit.
