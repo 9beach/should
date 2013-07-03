@@ -47,7 +47,7 @@
 
 #include <string.h>
 
-/* FIXME: Probably configure script is better place for the logic below. */
+/* FIXME: Probably configure script is the better place for the logic below. */
 #ifdef _MSC_VER
 #	define __func__ 		__FUNCTION__
 #endif
