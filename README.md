@@ -219,14 +219,15 @@ $ gcc test_fixture.c -lshould && ./a.out && rm -f a.out
 *** Results: 0 failures, 6 successes
 ```
 ### Failure Examples
-```
-*** Running should_suite "simple test A"...
-should_be failed: ("hello" == a) -> not ("hello" == "HELLO") in "case_hello", /home/seafarer/should/tests/test_simple.c (10)
-should_be failed: "OMG" (a == 9) in "case_world", /home/seafarer/should/tests/test_simple.c (22)
-should_be failed: (b != 20) -> not (20 != 20) in "case_world", /home/seafarer/should/tests/test_simple.c (25)
+```bash
+$ gcc test_failure.c -lshould && ./a.out && echo "SUCCESS"
+*** Running should_suite "failure test A"...
+should_be failed: ("hello" == a) -> not ("hello" == "HELLO") in "case_hello", /tmp/test_failure.c (10)
+should_be failed: "OMG" (a == 9) in "case_world", /tmps/test_failure.c (22)
+should_be failed: (b != 20) -> not (20 != 20) in "case_world", /tmp/test_failure.c (25)
 *** Results: 3 failures, 12 successes
-*** Running should_suite "simple test B"...
-should_be failed: ("hello" == a) -> not ("hello" == "HELLO") in "case_hello", /home/seafarer/should/tests/test_simple.c (10)
+*** Running should_suite "failure test B"...
+should_be failed: ("hello" == a) -> not ("hello" == "HELLO") in "case_hello", /tmp/test_failure.c (10)
 *** Results: 1 failures, 2 successes
 ```
 ## Reference
