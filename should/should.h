@@ -174,7 +174,7 @@ void should_set_fixture(should_suite_t *suite, void *(*setup)(),
  * \brief Adds the test case to the test suite.
  * \return 0 if malloc succeeds
  */
-int should_add_case(should_suite_t *suite, void (*case_func)(void *));
+int should_add_case(should_suite_t *suite, void (*a_case)(void *));
 
 /*!
  * \brief Runs all the test cases of the test suite.

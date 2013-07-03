@@ -49,11 +49,11 @@ void should_destroy_suite(should_suite_t *suite)
 	free(suite);
 }
 
-int should_add_case(should_suite_t *suite, case_func_t case_func)
+int should_add_case(should_suite_t *suite, case_func_t a_case)
 {
 	case_func_t *new_cases;
 
-	assert(suite && case_func);
+	assert(suite && a_case);
 	new_cases = realloc(suite->cases, 
 			sizeof(case_func_t) * (suite->size + 1));
 	if (0 == new_cases) {
@@ -62,7 +62,7 @@ int should_add_case(should_suite_t *suite, case_func_t case_func)
 
 	++suite->size;
 	suite->cases = new_cases;
-	suite->cases[suite->size - 1] = case_func;
+	suite->cases[suite->size - 1] = a_case;
 
 	return 0;
 }
@@ -75,15 +75,15 @@ void should_set_fixture(should_suite_t *suite, void *(*setup)(void *),
 	suite->teardown = teardown;
 }
 
-static void run_a_case_(should_suite_t *suite, case_func_t *a_case)
+static void run_a_case_(should_suite_t *suite, case_func_t a_case)
 {
 	void *fxtr = 0;
 
-	assert(a_case && suite);
+	assert(suite && a_case);
 	if (suite->setup) {
 		fxtr = (*suite->setup)(); /* allow fxtr == 0 */
 	}
-	(*a_case)(fxtr);
+	a_case(fxtr);
 	if (suite->teardown) {
 		(*suite->teardown)(fxtr);
 	}
@@ -96,12 +96,12 @@ int should_run_suite(should_suite_t *suite)
 	success_count_ = 0;
 	failure_count_ = 0;
 
-	assert(suite);
+	assert(suite && suite->name);
 	printf("*** Running should_suite \"%s\"...\n", suite->name);
 
-	assert(suite);
 	for (i = 0; i < suite->size; ++i) {
-	    run_a_case_(suite, &(suite->cases[i]));
+		assert(suite->cases[i]);
+		run_a_case_(suite, suite->cases[i]);
 	}
 
 	printf("*** Results: %d failures, %d successes\n",
