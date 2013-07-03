@@ -37,12 +37,12 @@
  *
  * \subsection fixture_sec Setup, Teardown, and Fixture
  *
- * Fixture is a environment which is shared among test cases and/or suites 
- * of a test suite.
- *
- * You can initialize/finalize the fixture with the setup/teardown function.
- * If a suite has many suites and/or cases, the setup/teardown functions 
- * are called for each of the suites and/or cases.
+ * Fixture is a environment which is shared among all the test cases of a test
+ * suites.
+
+ * You can initialize and finalize the fixture with setup and teardown
+ * functions. If a test suite has many test cases, the setup and teardown
+ * functions are called for each of all the test cases.
  */
 
 #include <string.h>
