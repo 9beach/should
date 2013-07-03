@@ -24,8 +24,7 @@ struct should_suite_t {
 
 should_suite_t *should_create_suite(const char *name)
 {
-	should_suite_t *suite = 
-			(should_suite_t *)malloc(sizeof(should_suite_t));
+	should_suite_t *suite = malloc(sizeof(should_suite_t));
 
 	if (0 == suite) {
 		return 0;
