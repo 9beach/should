@@ -65,8 +65,8 @@
  *
  * Prints the given message if fails.
  */
-#define should_be_msg(expr, msg)	should_be_msg_((expr), msg, \
-			#expr , __FILE__, __LINE__, __func__)
+#define should_be_msg(expr, msg)	should_be_msg_((expr), msg, #expr , \
+			__FILE__, __LINE__, __func__)
 
 /*!
  * \brief Verifies that two integers are the same.
