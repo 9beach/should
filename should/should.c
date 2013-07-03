@@ -107,7 +107,7 @@ int should_run_suite(should_suite_t *suite)
 	printf("*** Results: %d failures, %d successes\n",
 			failure_count_, success_count_);
 
-	return (failure_count_ != 0);
+	return failure_count_;
 }
 
 int should_run_and_destroy_suite(should_suite_t *suite)
