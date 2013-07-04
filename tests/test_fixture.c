@@ -4,8 +4,8 @@
 #include <stdlib.h>
 #include <assert.h>
 
-/* suppose that you implemented fwrite/ftell functions and 
- * want to verify them working correctly. */
+/* suppose that you implemented fwrite and ftell functions and want to verify 
+ * them working correctly. */
 
 void *setup()
 {
@@ -31,7 +31,7 @@ void case_hello(void *fxtr)
 
 	should_be_eq(0, ftell(file));
 	should_be_msg(cnt == fwrite(buf, sizeof(char), cnt, file), 
-		"Could've Been");
+			"Oh No!");
 	should_be_eq(cnt, ftell(file));
 }
 

@@ -80,7 +80,7 @@ static void run_a_case_(should_suite_t *suite, case_func_t a_case)
 
 	assert(suite && a_case);
 	if (suite->setup) {
-		fxtr = (*suite->setup)(); /* allow fxtr == 0 */
+		fxtr = (*suite->setup)();
 	}
 	a_case(fxtr);
 	if (suite->teardown) {
@@ -136,7 +136,7 @@ void should_be_(int expr, const char *expr_str, const char *file, int line,
 void should_be_msg_(int expr, const char *msg, const char *expr_str,
 		const char *file, int line, const char *func)
 {
-	assert(expr_str && file && line && func);
+	assert(msg && expr_str && file && line && func);
 	if (0 != expr) {
 		++success_count_;
 	} else {
@@ -155,7 +155,7 @@ void should_cmp_(int val1, int val2, const char *expr1, const char *expr2,
 		++success_count_;
 	} else {
 		++failure_count_;
-		printf("should_be failed: (%s %s %s) -> not (%d %s %d) "
+		printf("should_be failed: (%s %s %s) -> (%d %s %d) "
 				"in \"%s\", %s (%d)\n", 
 				expr1, cmp_str, expr2, val1, cmp_str, val2, 
 				func, file, line); 
@@ -171,7 +171,7 @@ void should_cmp_str_(const char *val1, const char *val2, const char *expr1,
 		++success_count_;
 	} else {
 		++failure_count_;
-		printf("should_be failed: (%s %s %s) -> not (\"%s\" %s \"%s\") "
+		printf("should_be failed: (%s %s %s) -> (\"%s\" %s \"%s\") "
 				"in \"%s\", %s (%d)\n", 
 				expr1, cmp_str, expr2, val1, cmp_str, val2, 
 				func, file, line); 

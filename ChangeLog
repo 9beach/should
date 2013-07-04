@@ -1,3 +1,8 @@
+2013-07-04  Hyunrae Cho  <9beach@gmail.com>
+
+	* Version 0.6.0.
+	* should/should.c: Change the failure message format
+
 2013-07-03  Hyunrae Cho  <9beach@gmail.com>
 
 	* Version 0.5.1.

@@ -19,7 +19,7 @@ void case_world(void *fxtr)
 
 	should_be(a != b);
 	should_be(a == 10);
-	should_be_msg(a != 9, "OMG");
+	should_be_msg(a != 9, "Oh No!");
 
 	should_be_eq(a, 10);
 	should_be_eq(b, 20);
@@ -36,7 +36,7 @@ int main()
 {
 	int ret0, ret1;
 
-	/* as a example, we gonna make two test suites */
+	/* we will make two test suites. */
 	should_suite_t *s0;
 	should_suite_t *s1;
 
@@ -50,11 +50,11 @@ int main()
 	    abort();
 	}
 
-	/* suite s0 has two test cases */
+	/* suite s0 has two test cases. */
 	should_add_case(s0, case_hello);
 	should_add_case(s0, case_world);
 
-	/* suite s1 has one test case */
+	/* suite s1 has one test case. */
 	should_add_case(s1, case_hello);
 
 	/* and finally ... */

@@ -88,7 +88,7 @@ void case_world(void *fxtr)
 
         should_be(a != b);
         should_be(a == 10);
-        should_be_msg(a != 9, "OMG");
+        should_be_msg(a != 9, "Oh No!");
 
         should_be_eq(a, 10);
         should_be_eq(b, 20);
@@ -105,7 +105,7 @@ int main()
 {
         int ret0, ret1;
 
-        /* as a example, we gonna make two test suites */
+        /* we will make two test suites. */
         should_suite_t *s0;
         should_suite_t *s1;
 
@@ -119,11 +119,11 @@ int main()
             abort();
         }
 
-        /* suite s0 has two test cases */
+        /* suite s0 has two test cases. */
         should_add_case(s0, case_hello);
         should_add_case(s0, case_world);
 
-        /* suite s1 has one test case */
+        /* suite s1 has one test case. */
         should_add_case(s1, case_hello);
 
         /* and finally ... */
@@ -152,8 +152,8 @@ $ gcc test_simple.c -lshould && ./a.out && rm -f a.out
 #include <stdlib.h>
 #include <assert.h>
 
-/* suppose that you implemented fwrite/ftell functions and
- * want to verify them working correctly. */
+/* suppose that you implemented fwrite and ftell functions and want to verify 
+ * them working correctly. */
 
 void *setup()
 {
@@ -178,8 +178,8 @@ void case_hello(void *fxtr)
         const size_t cnt = strlen(buf);
 
         should_be_eq(0, ftell(file));
-        should_be_msg(cnt == fwrite(buf, sizeof(char), cnt, file),
-                "Could've Been");
+        should_be_msg(cnt == fwrite(buf, sizeof(char), cnt, file), 
+                        "Oh No!");
         should_be_eq(cnt, ftell(file));
 }
 
@@ -222,12 +222,12 @@ $ gcc test_fixture.c -lshould && ./a.out && rm -f a.out
 ```bash
 $ gcc test_failure.c -lshould && ./a.out && echo "SUCCESS"
 *** Running should_suite "failure test A"...
-should_be failed: ("hello" == a) -> not ("hello" == "HELLO") in "case_hello", /tmp/test_failure.c (10)
-should_be failed: "OMG" (a == 9) in "case_world", /tmp/test_failure.c (22)
-should_be failed: (b != 20) -> not (20 != 20) in "case_world", /tmp/test_failure.c (25)
+should_be failed: ("hello" == a) -> ("hello" == "HELLO") in "case_hello", /tmp/test_failure.c (10)
+should_be failed: "Oh No!" (a == 9) in "case_world", /tmp/test_failure.c (22)
+should_be failed: (b != 20) -> (20 != 20) in "case_world", /tmp/test_failure.c (25)
 *** Results: 3 failures, 12 successes
 *** Running should_suite "failure test B"...
-should_be failed: ("hello" == a) -> not ("hello" == "HELLO") in "case_hello", /tmp/test_failure.c (10)
+should_be failed: ("hello" == a) -> ("hello" == "HELLO") in "case_hello", /tmp/test_failure.c (10)
 *** Results: 1 failures, 2 successes
 ```
 ## Reference
