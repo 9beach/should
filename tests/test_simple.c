@@ -18,8 +18,8 @@ void case_world(void *fxtr)
 	int b = 20;
 
 	should_be(a != b);
-	should_be(a == 10);
 	should_be_msg(a != 9, "Oh No!");
+	should_be_msg(a == 10, "'a' is not 10 but %d.", a);
 
 	should_be_eq(a, 10);
 	should_be_eq(b, 20);

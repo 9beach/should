@@ -46,6 +46,7 @@
  */
 
 #include <string.h>
+#include <stdio.h>
 
 /* FIXME: Probably configure script is the better place for the logic below. */
 #ifdef _MSC_VER
@@ -65,8 +66,12 @@
  *
  * Prints the given message if fails.
  */
-#define should_be_msg(expr, msg)	should_be_msg_((expr), msg, #expr , \
-			__FILE__, __LINE__, __func__)
+#define should_be_msg(expr, ...)	do { \
+			char msg[1024]; \
+    			sprintf(msg, __VA_ARGS__); \
+			should_be_msg_((expr), msg, #expr , \
+			__FILE__, __LINE__, __func__); \
+			} while (0)
 
 /*!
  * \brief Verifies that two integers are the same.

@@ -1,7 +1,12 @@
+2013-07-17  Hyunrae Cho  <9beach@gmail.com>
+
+	* Version 0.7.0.
+	* should/should.h: Add va_args features to should_be_msg macro.
+
 2013-07-04  Hyunrae Cho  <9beach@gmail.com>
 
 	* Version 0.6.0.
-	* should/should.c: Change the failure message format
+	* should/should.c: Change the failure message format.
 
 2013-07-03  Hyunrae Cho  <9beach@gmail.com>
 
