@@ -42,7 +42,7 @@ macro.
 it prints error message (does not abort).
 
 * `should_be(expr)` Verifies that the expression is true.
-* `should_be_msg(expr, msg)` Verifies that the expression is true. Prints 
+* `should_be_msg(expr, ...)` Verifies that the expression is true. Prints 
 the given message format if fails.
 * `should_be_eq(val1, val2)` Verifies that two integers are the same.
 * `should_be_ne(val1, val2)` Verifies that two integers are not the same.
