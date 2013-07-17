@@ -64,7 +64,7 @@
 /*!
  * \brief Verifies that the expression is true.
  *
- * Prints the given message if fails.
+ * Prints the given message format if fails.
  */
 #define should_be_msg(expr, ...)	do { \
 			char msg[1024]; \
