@@ -42,8 +42,8 @@ macro.
 it prints error message (does not abort).
 
 * `should_be(expr)` Verifies that the expression is true.
-* `should_be_msg(expr, ...)` Verifies that the expression is true. Prints 
-the given message format if fails.
+* `should_be_else_printf(expr, ...)` Verifies that the expression is true. 
+Prints the given message format if fails.
 * `should_be_eq(val1, val2)` Verifies that two integers are the same.
 * `should_be_ne(val1, val2)` Verifies that two integers are not the same.
 * `should_be_lt(val1, val2)` Verifies that the first integer is less than the 
@@ -87,8 +87,8 @@ void case_world(void *fxtr)
         int b = 20;
 
         should_be(a != b);
-        should_be_msg(a != 9, "Oh No!");
-        should_be_msg(a == 10, "'a' is not 10 but %d.", a);
+        should_be_else_printf(a != 9, "Oh No!");
+        should_be_else_printf(a == 10, "'a' is not 10 but %d.", a);
 
         should_be_eq(a, 10);
         should_be_eq(b, 20);
@@ -178,7 +178,7 @@ void case_hello(void *fxtr)
         const size_t cnt = strlen(buf);
 
         should_be_eq(0, ftell(file));
-        should_be_msg(cnt == fwrite(buf, sizeof(char), cnt, file), 
+        should_be_else_printf(cnt == fwrite(buf, sizeof(char), cnt, file), 
                         "Oh No!");
         should_be_eq(cnt, ftell(file));
 }

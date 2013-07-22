@@ -30,7 +30,7 @@ void case_hello(void *fxtr)
 	const size_t cnt = strlen(buf);
 
 	should_be_eq(0, ftell(file));
-	should_be_msg(cnt == fwrite(buf, sizeof(char), cnt, file), 
+	should_be_else_printf(cnt == fwrite(buf, sizeof(char), cnt, file), 
 			"Oh No!");
 	should_be_eq(cnt, ftell(file));
 }

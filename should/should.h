@@ -50,7 +50,7 @@
 
 /* FIXME: Probably configure script is the better place for the logic below. */
 #ifdef _MSC_VER
-#	define __func__ 		__FUNCTION__
+#	define __func__ 			__FUNCTION__
 #endif
 
 /*!
@@ -58,7 +58,7 @@
  *
  * Prints error message if fails.
  */
-#define should_be(expr)			should_be_((expr), #expr , \
+#define should_be(expr)				should_be_((expr), #expr , \
 			__FILE__, __LINE__, __func__)
 
 /*!
@@ -66,7 +66,7 @@
  *
  * Prints the given message format if fails.
  */
-#define should_be_msg(expr, ...)	do { \
+#define should_be_else_printf(expr, ...)	do { \
 			char msg[1024]; \
     			sprintf(msg, __VA_ARGS__); \
 			should_be_msg_((expr), msg, #expr , \
@@ -78,7 +78,7 @@
  *
  * Prints error message if fails.
  */
-#define should_be_eq(val1, val2)	do { \
+#define should_be_eq(val1, val2)		do { \
 			int x = (val1); int y = (val2); \
 			should_cmp_(x, y, #val1, #val2, x == y, "==", \
 			__FILE__, __LINE__, __func__); \
@@ -89,7 +89,7 @@
  *
  * Prints error message if fails.
  */
-#define should_be_ne(val1, val2)	do { \
+#define should_be_ne(val1, val2)		do { \
 			int x = (val1); int y = (val2); \
 			should_cmp_(x, y, #val1, #val2, x != y, "!=", \
 			__FILE__, __LINE__, __func__); \
@@ -99,7 +99,7 @@
  *
  * Prints error message if fails.
  */
-#define should_be_lt(val1, val2)	do { \
+#define should_be_lt(val1, val2)		do { \
 			int x = (val1); int y = (val2); \
 			should_cmp_(x, y, #val1, #val2, x < y, "<", \
 			__FILE__, __LINE__, __func__); \
@@ -110,7 +110,7 @@
  *
  * Prints error message if fails.
  */
-#define should_be_le(val1, val2)	do { \
+#define should_be_le(val1, val2)		do { \
 			int x = (val1); int y = (val2); \
 			should_cmp_(x, y, #val1, #val2, x <= y, "<=", \
 			__FILE__, __LINE__, __func__); \
@@ -121,7 +121,7 @@
  *
  * Prints error message if fails.
  */
-#define should_be_eq_str(val1, val2)	do { \
+#define should_be_eq_str(val1, val2)		do { \
 			const char *x = (val1); const char *y = (val2); \
 			should_cmp_str_(x, y, #val1, #val2, \
 			!strcmp(x, y), "==", \
@@ -133,7 +133,7 @@
  *
  * Prints error message if fail.
  */
-#define should_be_ne_str(val1, val2)	do { \
+#define should_be_ne_str(val1, val2)		do { \
 			const char *x = (val1); const char *y = (val2); \
 			should_cmp_str_(x, y, #val1, #val2, \
 			strcmp(x, y), "!=", \
