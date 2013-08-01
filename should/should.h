@@ -58,7 +58,7 @@
  *
  * Prints error message if fails.
  */
-#define should_be(expr)				should_be_((expr), #expr , \
+#define should_be(expr)				should_be_((expr), #expr, \
 			__FILE__, __LINE__, __func__)
 
 /*!
@@ -68,8 +68,8 @@
  */
 #define should_be_else_printf(expr, ...)	do { \
 			char msg[1024]; \
-    			sprintf(msg, __VA_ARGS__); \
-			should_be_msg_((expr), msg, #expr , \
+			sprintf(msg, __VA_ARGS__); \
+			should_be_msg_((expr), msg, #expr, \
 			__FILE__, __LINE__, __func__); \
 			} while (0)
 
