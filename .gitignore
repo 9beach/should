@@ -16,5 +16,8 @@
 *.out
 *.app
 
-# for OSX
+# OSX
 .DS_Store
+
+# CMake build directory
+build
