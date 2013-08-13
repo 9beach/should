@@ -1,0 +1,9 @@
+prefix=@CMAKE_INSTALL_PREFIX@
+libdir=${prefix}/lib
+includedir=${prefix}/include
+
+Name: should
+Description: should is a minimal xUnit for C programmers.
+Version: @SHOULD_VERSION_STRING@
+Libs: -L${libdir} -lshould
+Cflags: -I${includedir}/should
