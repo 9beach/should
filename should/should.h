@@ -67,9 +67,9 @@
  * Prints the given message format if fails.
  */
 #define should_be_else_printf(expr, ...)	do { \
-			char msg[1024]; \
-			sprintf(msg, __VA_ARGS__); \
-			should_be_msg_((expr), msg, #expr, \
+			char _msg_[1024]; \
+			sprintf(_msg_, __VA_ARGS__); \
+			should_be_else_printf_((expr), _msg_, #expr, \
 			__FILE__, __LINE__, __func__); \
 			} while (0)
 
@@ -200,7 +200,7 @@ int should_run_and_destroy_suite(should_suite_t *suite);
 void should_be_(int expr, const char *expr_str, const char *file, int line, 
 		const char *func);
 
-void should_be_msg_(int expr, const char *msg, const char *expr_str,
+void should_be_else_printf_(int expr, const char *msg, const char *expr_str,
 		const char *file, int line, const char *func);
 
 void should_cmp_(int val1, int val2, const char *expr1, const char *expr2,

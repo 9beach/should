@@ -1,3 +1,8 @@
+2013-09-11  Hyunrae Cho  <9beach@gmail.com>
+
+	* Version 0.8.0.
+	* should/should.h: Rename should_be_msg_ to should_be_else_printf_.
+
 2013-07-22  Hyunrae Cho  <9beach@gmail.com>
 
 	* Version 0.7.1.

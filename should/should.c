@@ -126,24 +126,26 @@ void should_be_(int expr, const char *expr_str, const char *file, int line,
 	assert(expr_str && file && line && func);
 	if (0 != expr) {
 		++success_count_;
-	} else {
-		++failure_count_;
-		printf("should_be failed: (%s) in \"%s\", %s (%d)\n", 
-				expr_str, func, file, line); 
+		return;
 	}
+
+	++failure_count_;
+	printf("should_be failed: (%s) in \"%s\", %s (%d)\n", expr_str, func, 
+			file, line); 
 }
 
-void should_be_msg_(int expr, const char *msg, const char *expr_str,
+void should_be_else_printf_(int expr, const char *msg, const char *expr_str,
 		const char *file, int line, const char *func)
 {
 	assert(msg && expr_str && file && line && func);
 	if (0 != expr) {
 		++success_count_;
-	} else {
-		++failure_count_;
-		printf("should_be failed: \"%s\" (%s) in \"%s\", %s (%d)\n", 
-				msg, expr_str, func, file, line); 
+		return;
 	}
+
+	++failure_count_;
+	printf("should_be failed: \"%s\" (%s) in \"%s\", %s (%d)\n", msg, 
+			expr_str, func, file, line); 
 }
 
 void should_cmp_(int val1, int val2, const char *expr1, const char *expr2, 
@@ -153,13 +155,14 @@ void should_cmp_(int val1, int val2, const char *expr1, const char *expr2,
 	assert(expr1 && expr2 && cmp_str && file && line && func);
 	if (expr) {
 		++success_count_;
-	} else {
-		++failure_count_;
-		printf("should_be failed: (%s %s %s) -> (%d %s %d) "
-				"in \"%s\", %s (%d)\n", 
-				expr1, cmp_str, expr2, val1, cmp_str, val2, 
-				func, file, line); 
+		return;
 	}
+
+	++failure_count_;
+	printf("should_be failed: (%s %s %s) -> (%d %s %d) "
+			"in \"%s\", %s (%d)\n", 
+			expr1, cmp_str, expr2, val1, cmp_str, val2, 
+			func, file, line); 
 }
 
 void should_cmp_str_(const char *val1, const char *val2, const char *expr1,
@@ -169,11 +172,12 @@ void should_cmp_str_(const char *val1, const char *val2, const char *expr1,
 	assert(expr1 && expr2 && cmp_str && file && line && func);
 	if (expr) {
 		++success_count_;
-	} else {
-		++failure_count_;
-		printf("should_be failed: (%s %s %s) -> (\"%s\" %s \"%s\") "
-				"in \"%s\", %s (%d)\n", 
-				expr1, cmp_str, expr2, val1, cmp_str, val2, 
-				func, file, line); 
+		return;
 	}
+
+	++failure_count_;
+	printf("should_be failed: (%s %s %s) -> (\"%s\" %s \"%s\") "
+			"in \"%s\", %s (%d)\n", 
+			expr1, cmp_str, expr2, val1, cmp_str, val2, 
+			func, file, line); 
 }
