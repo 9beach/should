@@ -110,7 +110,6 @@ int should_run_and_destroy_suite(should_suite_t *suite)
 {
 	int ret;
 
-	assert(suite);
 	ret = should_run_suite(suite);
 	should_destroy_suite(suite);
 
