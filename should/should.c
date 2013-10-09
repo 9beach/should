@@ -30,11 +30,8 @@ should_suite_t *should_create_suite(const char *name)
 		return 0;
 	}
 
+	memset(suite, 0, sizeof(should_suite_t));
 	suite->name = name;
-	suite->cases = 0;
-	suite->setup = 0;
-	suite->size = 0;
-	suite->teardown = 0;
 
 	return suite;
 }
