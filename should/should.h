@@ -9,42 +9,6 @@
  * \date 2007/08/08
  */
 
-/*!
- * \mainpage SHOULD
- * \section intro_sec Introduction
- * 
- * SHOULD is a minimal xUnit for C programmers.
- *
- * I think today's most xUnit libraries are too much complex and there are some
- * good reasons to "reinvent the wheel". SHOULD simply and justly supports the 
- * key concepts of Kent Beck's original testing framework.
- *
- * \section glossary Glossary
- * \subsection test_suite_sec Test Suite
- *
- * A test suite can hold multiple test cases. Test is performed by running a 
- * test suite.
- *
- * \subsection test_case_sec Test Case
- *
- * Test case is void (*)(void *) type function including at least one should_be 
- * macro.
- *
- * \subsection should_be_sec should_be macros
- *
- * should_be macros verify a expression. If the expression is not true,
- * it puts error message (does not abort).
- *
- * \subsection fixture_sec Setup, Teardown, and Fixture
- *
- * Fixture is a environment which is shared among all the test cases of a test
- * suites.
-
- * You can initialize and finalize the fixture with setup and teardown
- * functions. If a test suite has many test cases, the setup and teardown
- * functions are called for each of all the test cases.
- */
-
 #include <string.h>
 #include <stdio.h>
 
