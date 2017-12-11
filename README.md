@@ -231,5 +231,4 @@ should_be failed: ("hello" == a) -> ("hello" == "HELLO") in "case_hello", /tmp/t
 *** Results: 1 failures, 2 successes
 ```
 ## Reference
-* [Kent Beck's original testing framework paper]
-(http://www.xprogramming.com/testfram.htm)
+* [Kent Beck's original testing framework paper](http://www.xprogramming.com/testfram.htm)
